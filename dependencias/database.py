@@ -2,7 +2,7 @@ import sqlite3
 
 class FerramentaDatabase():
     def __init__(self, inicio = False):
-        self.database = 'dependencias/banco/banco_de_teste.db'
+        self.database = 'dependencias/database.db'
         self.resultado = 0
         if inicio: self.auto_iniciar()
 
@@ -11,19 +11,25 @@ class FerramentaDatabase():
         cursor = login.cursor()
         executando = (comando)
         cursor.execute(executando)
-        if lendo == True: self.resultado = cursor.fetchall()
+        if lendo: self.resultado = cursor.fetchall()
         login.commit()
         login.close()
-        if retornando == True: return self.resultado
+        if retornando: return self.resultado
 
     def auto_iniciar(self):
         relacao = {
-            'login':'login text primary key, senha text, ultimo_login int, criado_em int, nome_utilizador text, endereco_utilizador text',
-            'cliente':'nome text primary key, endereco text, tel_1 int, tel_2 int',
-            'pedido':'cliente text, n_pedido int primary key, modo int, id_sacola int, foreign key (cliente) references cliente (nome)',
-            'sacola':'id_sacola int primary key, '
+            'login':'login text primary key, senha text, ultimo_login integer, criado_em integer, nome_utilizador text, endereco_utilizador text',
+            'cliente':'nome text primary key, endereco text, tel_1 integer, tel_2 integer',
+            'pedido':'cliente text, n_pedido integer primary key, modo integer, id_sacola integer, foreign key (cliente) references cliente (nome)',
+            'itens': 'item_id integer primary key autoincrement, nome text, preco integer',
+            'sacola':'id_sacola integer, item integer, data integer, foreign key (id_sacola) references pedido (id_sacola), foreign key (item) references itens (item_id)',
         }
+
+        for item in relacao.keys():
+            self.executando(f'create table if not exists {item} ({relacao[item]})')
 
 if __name__ == "__main__":
 
-    pass
+    db = FerramentaDatabase(True)
+    db.executando(f'select name from sqlite_master where type = "table"', True)
+    print(db.resultado)
