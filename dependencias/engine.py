@@ -1,40 +1,59 @@
-from database import FerramentaDatabase
+import os, sys
+sys.path.insert(0, './')
+
+from dependencias.database import FerramentaDatabase
 
 class Esqueleto():
     def __init__(self):
         self.auto_iniciar()
         self.tabela = 'teste'
+        self.resposta = ''
 
     def auto_iniciar(self):
         self.database = FerramentaDatabase()
 
     def cadastrar(self, lista_valores):
-        tratado = ''
+        try:
+            tratado = ''
 
-        for item in lista_valores:
-            if item == lista_valores[len(lista_valores) - 1]: tratado = tratado + f'"{item}"'
-            else: tratado = tratado + f'"{item}", '
-        
-        comando = f'insert into {self.tabela} values ({tratado})'
-        self.database.executando(comando)
+            for item in lista_valores:
+                if item == lista_valores[len(lista_valores) - 1]: tratado = tratado + f'"{item}"'
+                else: tratado = tratado + f'"{item}", '
+            
+            comando = f'insert into {self.tabela} values ({tratado})'
+            self.database.executando(comando)
+            self.resposta = True
+        except:
+            self.resposta = False
 
     def exibir(self, itens, lista_local, item_especifico = False):
-        comando = f'select {itens} from {self.tabela}'
+        try:
+            comando = f'select {itens} from {self.tabela}'
 
-        if item_especifico: comando = f'{comando} where {lista_local[0]} = {lista_local[1]}'
+            if item_especifico: comando = f'{comando} where {lista_local[0]} = {lista_local[1]}'
 
-        self.database.executando(comando, True)
-        return self.database.executando(comando, True, True)
+            self.database.executando(comando, True)
+            self.resposta = True
+            return self.database.executando(comando, True, True)
+        except:
+            self.resposta = False
 
     def atualizar(self, dict_valores, lista_local):
-        valores = [f'{item} = {dict_valores[item]}' for item in dict_valores.keys()]
-        for item in valores:
-            comando = f'update {self.tabela} values ({valores}) where {lista_local[0]} = {lista_local[1]}'
-        self.database.executando(comando)
+        try:
+            for item in dict_valores.keys():
+                comando = f'update {self.tabela} set {item} = "{dict_valores[item]}" where {lista_local[0]} = {lista_local[1]}'
+                self.database.executando(comando)
+            self.resposta = True
+        except:
+            self.resposta = False
 
     def remover(self, lista_local):
-        comando = f'delete from {self.tabela} where {lista_local[0]} = {lista_local[1]})'
-        self.database.executando(comando)
+        try:
+            comando = f'delete from {self.tabela} where {lista_local[0]} = {lista_local[1]})'
+            self.database.executando(comando)
+            self.resposta = True
+        except:
+            self.resposta = False
 
 class TratandoLogin(Esqueleto):
     def __init__(self):
@@ -63,6 +82,13 @@ class TratandoOrcamento(Esqueleto):
 
 if __name__ == '__main__':
 
-    teste = TratandoCliente()
-    #teste.atualizar(['Macaco', 'Floresta', '552233226655', '552233665511'])
+    teste = TratandoLogin()
+
+    valores_a_atualizar = {
+        'login' : 'administrator',
+        'senha' : '123456789'
+    }
+    
+    teste.atualizar(valores_a_atualizar, ['login', f'"{teste.exibir("rowid, *", "")[0][1]}"'])
+
     print(teste.exibir('rowid, *', ''))

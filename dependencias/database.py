@@ -17,12 +17,12 @@ class FerramentaDatabase():
         if retornando: return self.resultado
 
     def auto_iniciar(self):
-        relacao = {  
-            'login'     : 'login text primary key, senha text, ultimo_login integer, criado_em integer, nome_utilizador text, endereco_utilizador text',
-            'cliente'   : 'id_cliente int primary key, nome text, identidade int primary key, endereco text, tel_1 integer, tel_2 integer',
-            'servico'   : 'id_cliente int, id_pedido integer primary key, modo integer, id_orcamento integer primary key, foreign key (id_cliente) references cliente (id_cliente)',
-            'itens'     : 'id_item integer primary key autoincrement, nome text, preco integer',
-            'orcamento' : 'id_orcamento integer, item integer, data integer, foreign key (id_orcamento) references pedido (id_orcamento), foreign key (item) references itens (id_item)',
+        relacao = {
+            'login'              : 'login text primary key, senha text, ultimo_login integer, criado_em integer, nome_utilizador text, endereco_utilizador text',
+            'cliente'            : 'id_cliente integer primary key, nome text, identidade integer, endereco text, tel_1 integer, tel_2 integer',
+            'pedido'             : 'id_cliente integer, id_pedido integer primary key, modo integer, foreign key (id_cliente) references cliente (id_cliente)',
+            'produtos'           : 'id_produto integer primary key autoincrement, modo integer, nome text, preco integer',
+            'produtos_do_pedido' : 'id_pedido integer, id_produto integer, data integer, foreign key (id_pedido) references pedido (id_pedido), foreign key (id_produto) references produto (id_produto)',
         }
 
         for item in relacao.keys():
@@ -37,9 +37,9 @@ if __name__ == "__main__":
     #print(db.resultado)
     
 
-    #db.executando(f'insert into login values ("admin", "admin", "00000000000", "00000000000", "administrator", "nowhere")')
-    #db.executando('insert into cliente values ("Angolano", "Angola", "5527998881234", "0")')
-    #db.executando('insert into itens values ("1000", "Troca de Algo", 15000)')
+    db.executando('insert into login values ("admin", "admin", "00000000000", "00000000000", "administrator", "nowhere")')
+    db.executando('insert into cliente values ("1000", "Angolano", "12345678901", "Angola", "5527998881234", "0")')
+    db.executando('insert into produtos values ("1000", "01", "Troca de Algo", 15000)')
     
     #db
 
