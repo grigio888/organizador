@@ -1,6 +1,6 @@
 from PySide2 import QtCore, QtGui
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt)
+    QRect, QSize, QUrl, Qt, QPropertyAnimation)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
     QRadialGradient)
@@ -14,7 +14,7 @@ class Ui_Organizador(object):
     def setupUi(self, Organizador):
         if Organizador.objectName():
             Organizador.setObjectName(u"Organizador")
-        Organizador.resize(500, 410)
+        Organizador.resize(500, 411)
         Organizador.setMinimumSize(QSize(500, 410))
         Organizador.setStyleSheet(u"background-color: rgb(255,255,255);")
         self.widget_central = QWidget(Organizador)
@@ -35,12 +35,20 @@ class Ui_Organizador(object):
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.a_menu_superior = QFrame(self.a_menu_esquerda)
         self.a_menu_superior.setObjectName(u"a_menu_superior")
+        self.a_menu_superior.setMaximumSize(QSize(16777215, 292))
         self.a_menu_superior.setFrameShape(QFrame.StyledPanel)
         self.a_menu_superior.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_3 = QVBoxLayout(self.a_menu_superior)
-        self.verticalLayout_3.setSpacing(25)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.a_botao_home = QPushButton(self.a_menu_superior)
+        self.verticalLayout_9 = QVBoxLayout(self.a_menu_superior)
+        self.verticalLayout_9.setSpacing(0)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.a_slot_1 = QFrame(self.a_menu_superior)
+        self.a_slot_1.setObjectName(u"a_slot_1")
+        self.a_slot_1.setFrameShape(QFrame.StyledPanel)
+        self.a_slot_1.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.a_slot_1)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.a_botao_home = QPushButton(self.a_slot_1)
         self.a_botao_home.setObjectName(u"a_botao_home")
         icon = QIcon()
         icon.addFile(u":/icons/icones/menu.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -49,9 +57,20 @@ class Ui_Organizador(object):
         self.a_botao_home.setCheckable(False)
         self.a_botao_home.setFlat(True)
 
-        self.verticalLayout_3.addWidget(self.a_botao_home, 0, Qt.AlignVCenter)
+        self.horizontalLayout_5.addWidget(self.a_botao_home)
 
-        self.b_botao_pedido = QPushButton(self.a_menu_superior)
+
+        self.verticalLayout_9.addWidget(self.a_slot_1)
+
+        self.b_slot_2 = QFrame(self.a_menu_superior)
+        self.b_slot_2.setObjectName(u"b_slot_2")
+        self.b_slot_2.setFrameShape(QFrame.StyledPanel)
+        self.b_slot_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_3 = QVBoxLayout(self.b_slot_2)
+        self.verticalLayout_3.setSpacing(15)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 7, 0, 15)
+        self.b_botao_pedido = QPushButton(self.b_slot_2)
         self.b_botao_pedido.setObjectName(u"b_botao_pedido")
         icon1 = QIcon()
         icon1.addFile(u":/icons/icones/document-edit.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -59,9 +78,9 @@ class Ui_Organizador(object):
         self.b_botao_pedido.setIconSize(QSize(25, 25))
         self.b_botao_pedido.setFlat(True)
 
-        self.verticalLayout_3.addWidget(self.b_botao_pedido, 0, Qt.AlignHCenter)
+        self.verticalLayout_3.addWidget(self.b_botao_pedido)
 
-        self.c_botao_cliente = QPushButton(self.a_menu_superior)
+        self.c_botao_cliente = QPushButton(self.b_slot_2)
         self.c_botao_cliente.setObjectName(u"c_botao_cliente")
         icon2 = QIcon()
         icon2.addFile(u":/icons/icones/user-id.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -69,9 +88,9 @@ class Ui_Organizador(object):
         self.c_botao_cliente.setIconSize(QSize(25, 25))
         self.c_botao_cliente.setFlat(True)
 
-        self.verticalLayout_3.addWidget(self.c_botao_cliente, 0, Qt.AlignHCenter)
+        self.verticalLayout_3.addWidget(self.c_botao_cliente)
 
-        self.d_botao_item = QPushButton(self.a_menu_superior)
+        self.d_botao_item = QPushButton(self.b_slot_2)
         self.d_botao_item.setObjectName(u"d_botao_item")
         icon3 = QIcon()
         icon3.addFile(u":/icons/icones/to-do.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -79,17 +98,20 @@ class Ui_Organizador(object):
         self.d_botao_item.setIconSize(QSize(25, 25))
         self.d_botao_item.setFlat(True)
 
-        self.verticalLayout_3.addWidget(self.d_botao_item)
+        self.verticalLayout_3.addWidget(self.d_botao_item, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
-        self.pushButton_4 = QPushButton(self.a_menu_superior)
-        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.e_botao_relatorio = QPushButton(self.b_slot_2)
+        self.e_botao_relatorio.setObjectName(u"e_botao_relatorio")
         icon4 = QIcon()
         icon4.addFile(u":/icons/icones/clipboard.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_4.setIcon(icon4)
-        self.pushButton_4.setIconSize(QSize(25, 25))
-        self.pushButton_4.setFlat(True)
+        self.e_botao_relatorio.setIcon(icon4)
+        self.e_botao_relatorio.setIconSize(QSize(25, 25))
+        self.e_botao_relatorio.setFlat(True)
 
-        self.verticalLayout_3.addWidget(self.pushButton_4)
+        self.verticalLayout_3.addWidget(self.e_botao_relatorio, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+
+
+        self.verticalLayout_9.addWidget(self.b_slot_2)
 
 
         self.verticalLayout_2.addWidget(self.a_menu_superior, 0, Qt.AlignTop)
@@ -301,35 +323,52 @@ class Ui_Organizador(object):
         QMetaObject.connectSlotsByName(Organizador)
     # setupUi
 
+    def home_page(self, Organizador):
+        self.frame = QFrame(self.b_corpo)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_7.addWidget(self.frame)
+
+        self.frame_3 = QFrame(self.b_corpo)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.frame_3)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.imagem = QLabel(self.frame_3)
+        self.imagem.setObjectName(u"imagem")
+        self.imagem.setPixmap(QPixmap(u"../side/logo.png"))
+        self.imagem.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_7.addWidget(self.imagem)
+
+
+        self.verticalLayout_7.addWidget(self.frame_3)
+
+        self.frame_2 = QFrame(self.b_corpo)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_7.addWidget(self.frame_2)
+
     def retranslateUi(self, Organizador):
         Organizador.setWindowTitle(QCoreApplication.translate("Organizador", u"MainWindow", None))
-#if QT_CONFIG(tooltip)
         self.a_botao_home.setToolTip(QCoreApplication.translate("Organizador", u"<html><head/><body><p>Home</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
         self.a_botao_home.setText("")
-#if QT_CONFIG(tooltip)
         self.b_botao_pedido.setToolTip(QCoreApplication.translate("Organizador", u"<html><head/><body><p>Pedidos</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
         self.b_botao_pedido.setText("")
-#if QT_CONFIG(tooltip)
         self.c_botao_cliente.setToolTip(QCoreApplication.translate("Organizador", u"<html><head/><body><p>Clientes</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
         self.c_botao_cliente.setText("")
-#if QT_CONFIG(tooltip)
         self.d_botao_item.setToolTip(QCoreApplication.translate("Organizador", u"<html><head/><body><p>Itens</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
         self.d_botao_item.setText("")
-#if QT_CONFIG(tooltip)
-        self.pushButton_4.setToolTip(QCoreApplication.translate("Organizador", u"<html><head/><body><p>Relat\u00f3rio</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.pushButton_4.setText("")
-#if QT_CONFIG(tooltip)
+        self.e_botao_relatorio.setToolTip(QCoreApplication.translate("Organizador", u"<html><head/><body><p>Relat\u00f3rio</p></body></html>", None))
+        self.e_botao_relatorio.setText("")
         self.a_botao_opcao.setToolTip(QCoreApplication.translate("Organizador", u"<html><head/><body><p>Op\u00e7\u00f5es</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
         self.a_botao_opcao.setText("")
-#if QT_CONFIG(tooltip)
         self.b_botao_logout.setToolTip(QCoreApplication.translate("Organizador", u"<html><head/><body><p>LogOut</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
         self.b_botao_logout.setText("")
         self.nome_prog.setText(QCoreApplication.translate("Organizador", u"Organizador", None))
         self.a_minimizar.setText("")
@@ -346,10 +385,18 @@ if __name__ == '__main__':
             self.ui = Ui_Organizador()
             self.ui.setupUi(self)
 
+            self.landing_page = [
+                self.ui.frame,
+                self.ui.frame_2,
+                self.ui.frame_3,
+                self.imagem,
+            ]
+
+            #  Comportamento
             self.estilo = "QPushButton:pressed{background-color: none; color: none; border: none;}"
             estilo_a_trocar = [self.ui.a_minimizar, self.ui.b_maximizar, self.ui.c_fechar,
                                self.ui.a_botao_home, self.ui.b_botao_pedido, self.ui.c_botao_cliente,
-                               self.ui.d_botao_item, self.ui.pushButton_4, self.ui.a_botao_opcao,
+                               self.ui.d_botao_item, self.ui.e_botao_relatorio, self.ui.a_botao_opcao,
                                self.ui.b_botao_logout]
             for item in estilo_a_trocar: item.setStyleSheet(self.estilo)
 
@@ -367,10 +414,17 @@ if __name__ == '__main__':
             self.setWindowIcon(QtGui.QIcon(':/icons/icones/basket.svg'))
             self.setWindowTitle('Organizador')
 
-            QSizeGrip(self.ui.espacador_2)
+            # Eventos
+            self.ui.a_container.mouseMoveEvent = self.movendo_janela
+            
             self.ui.a_minimizar.clicked.connect(lambda: self.showMinimized())
             self.ui.b_maximizar.clicked.connect(self.aplicando_e_retornando_maximizar)
             self.ui.c_fechar.clicked.connect(lambda: self.close())
+
+            self.ui.b_slot_2.setMaximumHeight(0)
+            self.ui.a_botao_home.clicked.connect(self.exibindo_ocultando_menu)
+
+            QSizeGrip(self.ui.espacador_2)
 
         def aplicando_e_retornando_maximizar(self):
             if self.isMaximized():
@@ -379,6 +433,36 @@ if __name__ == '__main__':
             else:
                 self.showMaximized()
                 self.ui.b_maximizar.setIcon(QtGui.QIcon(':/icons/icones/contract.svg'))
+
+        def movendo_janela(self, mouse):
+            if not self.isMaximized():
+                if mouse.buttons() == Qt.LeftButton:
+                    self.move(self.pos() + mouse.globalPos() - self.posicao_mouse)
+                    self.posicao_mouse = mouse.globalPos()
+                    mouse.accept()
+        
+        def mousePressEvent(self, event):
+            self.posicao_mouse = event.globalPos()
+
+        def exibindo_ocultando_menu(self): #282
+            altura = self.ui.b_slot_2.height()
+
+            if altura == 0:
+                nova_altura = 200
+            else:
+                nova_altura = 0
+
+            self.animacao = QPropertyAnimation(self.ui.b_slot_2, b'maximumHeight')
+            self.animacao.setDuration(1000)
+            self.animacao.setStartValue(altura)
+            self.animacao.setEndValue(nova_altura)
+            self.animacao.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+            self.animacao.start()
+
+        def iniciando_aplicacao(self):
+            
+
+
 
     app = QApplication(sys.argv)
     janela = Tela()
