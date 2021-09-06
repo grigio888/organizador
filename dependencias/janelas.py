@@ -385,12 +385,12 @@ if __name__ == '__main__':
             self.ui = Ui_Organizador()
             self.ui.setupUi(self)
 
-            self.landing_page = [
-                self.ui.frame,
-                self.ui.frame_2,
-                self.ui.frame_3,
-                self.imagem,
-            ]
+            #self.landing_page = [
+            #    self.ui.frame,
+            #    self.ui.frame_2,
+            #    self.ui.frame_3,
+            #    self.imagem,
+            #]
 
             #  Comportamento
             self.estilo = "QPushButton:pressed{background-color: none; color: none; border: none;}"
@@ -460,9 +460,7 @@ if __name__ == '__main__':
             self.animacao.start()
 
         def iniciando_aplicacao(self):
-            
-
-
+            pass
 
     app = QApplication(sys.argv)
     janela = Tela()
