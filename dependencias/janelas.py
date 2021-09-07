@@ -23,7 +23,8 @@ class Ui_Organizador(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"background-color: rgb(255,255,255); border-radius: 5px;")
+        self.frame.setStyleSheet(u"background-color: rgb(255,255,255);\n"
+"border-radius: 5px;")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.frame)
@@ -127,6 +128,7 @@ class Ui_Organizador(object):
 
         self.b_menu_inferior = QFrame(self.a_menu_esquerda)
         self.b_menu_inferior.setObjectName(u"b_menu_inferior")
+        self.b_menu_inferior.setMinimumSize(QSize(0, 67))
         self.b_menu_inferior.setFrameShape(QFrame.StyledPanel)
         self.b_menu_inferior.setFrameShadow(QFrame.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.b_menu_inferior)
@@ -286,36 +288,6 @@ class Ui_Organizador(object):
         self.b_corpo.setFrameShadow(QFrame.Raised)
         self.verticalLayout_7 = QVBoxLayout(self.b_corpo)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.frame_2 = QFrame(self.b_corpo)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-
-        self.verticalLayout_7.addWidget(self.frame_2)
-
-        self.frame_3 = QFrame(self.b_corpo)
-        self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_7 = QHBoxLayout(self.frame_3)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.imagem = QLabel(self.frame_3)
-        self.imagem.setObjectName(u"imagem")
-        self.imagem.setPixmap(QPixmap(u"logo.png"))
-        self.imagem.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_7.addWidget(self.imagem)
-
-
-        self.verticalLayout_7.addWidget(self.frame_3)
-
-        self.frame_4 = QFrame(self.b_corpo)
-        self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
-
-        self.verticalLayout_7.addWidget(self.frame_4)
-
 
         self.verticalLayout_2.addWidget(self.b_corpo)
 
@@ -393,7 +365,6 @@ class Ui_Organizador(object):
         self.a_minimizar.setText("")
         self.b_maximizar.setText("")
         self.c_fechar.setText("")
-        self.imagem.setText("")
     # retranslateUi
 
 class Ui_LandingPage(object):
@@ -484,11 +455,17 @@ if __name__ == '__main__':
             for item in estilo_a_trocar: item.setStyleSheet(self.estilo)
 
             # -- adicionando as janelas a serem exibidas no corpo
-            layout = QGridLayout()
+            estrutura = QVBoxLayout(self.ui.b_corpo)
+            estrutura.setSpacing(0)
+            estrutura.setObjectName(u"widget_landing_page")
+            estrutura.setContentsMargins(0, 0, 0, 0)
             
-            layout.addWidget(self.landing_page, 0, 0)
+            estrutura.addWidget(self.landing_page)
 
-            self.ui.b_corpo.setLayout(layout)
+            #layout = QVBoxLayout()
+            #layout.addWidget(self.landing_page)
+
+            #self.ui.b_corpo.addWidget(self.landing_page)
 
 
             # - Eventos
