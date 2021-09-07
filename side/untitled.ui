@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Organizador</class>
+ <widget class="QMainWindow" name="Organizador">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>500</width>
-    <height>410</height>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>400</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -22,7 +28,7 @@
      <widget class="QFrame" name="frame">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255,255,255);
-border-radius: 10px;</string>
+border-radius: 5px;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -280,6 +286,12 @@ border-radius: 10px;</string>
           </item>
           <item alignment="Qt::AlignBottom">
            <widget class="QFrame" name="b_menu_inferior">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>67</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -601,53 +613,7 @@ border-radius: 10px;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_7">
-             <item>
-              <widget class="QFrame" name="frame_2">
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QFrame" name="frame_3">
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_7">
-                <item>
-                 <widget class="QLabel" name="imagem">
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap>logo.png</pixmap>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QFrame" name="frame_4">
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            <layout class="QVBoxLayout" name="verticalLayout_7"/>
            </widget>
           </item>
           <item alignment="Qt::AlignBottom">
@@ -688,14 +654,14 @@ border-radius: 10px;</string>
               <widget class="QFrame" name="espacador_2">
                <property name="minimumSize">
                 <size>
-                 <width>10</width>
-                 <height>10</height>
+                 <width>12</width>
+                 <height>12</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>10</width>
-                 <height>10</height>
+                 <width>12</width>
+                 <height>12</height>
                 </size>
                </property>
                <property name="frameShape">
