@@ -286,8 +286,9 @@ class Ui_Organizador(object):
         self.b_corpo.setSizePolicy(sizePolicy2)
         self.b_corpo.setFrameShape(QFrame.StyledPanel)
         self.b_corpo.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.b_corpo)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout = QVBoxLayout(self.b_corpo)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+
 
         self.verticalLayout_2.addWidget(self.b_corpo)
 
@@ -367,21 +368,27 @@ class Ui_Organizador(object):
         self.c_fechar.setText("")
     # retranslateUi
 
-class Ui_LandingPage(object):
-    def setupUi(self, LandingPage):
-        if LandingPage.objectName():
-            LandingPage.setObjectName(u"LandingPage")
-        LandingPage.resize(400, 300)
+class Ui_LandingPage(QWidget):
+    def __init__(self, parent=None):
+        super(Ui_LandingPage, self).__init__(parent)
         self.verticalLayout = QVBoxLayout(LandingPage)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.frame_2 = QFrame(LandingPage)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.frame = QFrame(LandingPage)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_2 = QVBoxLayout(self.frame)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.frame_2 = QFrame(self.frame)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
 
-        self.verticalLayout.addWidget(self.frame_2)
+        self.verticalLayout_2.addWidget(self.frame_2)
 
-        self.frame_3 = QFrame(LandingPage)
+        self.frame_3 = QFrame(self.frame)
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
@@ -389,31 +396,23 @@ class Ui_LandingPage(object):
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.imagem = QLabel(self.frame_3)
         self.imagem.setObjectName(u"imagem")
-        self.imagem.setPixmap(QPixmap(u"logo.png"))
+        self.imagem.setText('PORRA')#Pixmap(QPixmap(u"logo.png"))
         self.imagem.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_7.addWidget(self.imagem)
 
 
-        self.verticalLayout.addWidget(self.frame_3)
+        self.verticalLayout_2.addWidget(self.frame_3)
 
-        self.frame_4 = QFrame(LandingPage)
+        self.frame_4 = QFrame(self.frame)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
 
-        self.verticalLayout.addWidget(self.frame_4)
+        self.verticalLayout_2.addWidget(self.frame_4)
 
 
-        self.retranslateUi(LandingPage)
-
-        QMetaObject.connectSlotsByName(LandingPage)
-    # setupUi
-
-    def retranslateUi(self, LandingPage):
-        LandingPage.setWindowTitle(QCoreApplication.translate("LandingPage", u"Form", None))
-        self.imagem.setText("")
-    # retranslateUi
+        self.verticalLayout.addWidget(self.frame)
 
 if __name__ == '__main__':
     import sys
@@ -455,12 +454,12 @@ if __name__ == '__main__':
             for item in estilo_a_trocar: item.setStyleSheet(self.estilo)
 
             # -- adicionando as janelas a serem exibidas no corpo
-            estrutura = QVBoxLayout(self.ui.b_corpo)
-            estrutura.setSpacing(0)
-            estrutura.setObjectName(u"widget_landing_page")
-            estrutura.setContentsMargins(0, 0, 0, 0)
+            #estrutura = QVBoxLayout(self.ui.b_corpo)
+            #estrutura.setSpacing(0)
+            #estrutura.setObjectName(u"widget_landing_page")
+            #estrutura.setContentsMargins(0, 0, 0, 0)
             
-            estrutura.addWidget(self.landing_page)
+            self.ui.verticalLayout.addWidget(self.landing_page, 0, Qt.AlignCenter)
 
             #layout = QVBoxLayout()
             #layout.addWidget(self.landing_page)

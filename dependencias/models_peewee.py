@@ -49,6 +49,7 @@ class Pedido(BaseModel):
     #chave estrangeira tabela Login para obter nome do vendedor
     criado_por = peewee.ForeignKeyField(Login)
     criado_em = peewee.DateTimeField()
+    modo = peewee.BooleanField()  # Pedido de compra ou orçamento.
     
     #obter nome do cliente
     cliente = peewee.ForeignKeyField(Cliente)
