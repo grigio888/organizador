@@ -1,0 +1,5 @@
+todo modulo tem que ter:
+
+import os, sys
+sys.path.insert(0, './')
+import side.icons_rc

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Pedido</class>
+ <widget class="QWidget" name="Pedido">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>625</width>
-    <height>515</height>
+    <width>623</width>
+    <height>516</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,6 +34,11 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="font">
+      <font>
+       <family>Century Gothic</family>
+      </font>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -45,7 +50,7 @@
        <number>0</number>
       </property>
       <item alignment="Qt::AlignTop">
-       <widget class="QFrame" name="frame_6">
+       <widget class="QFrame" name="a_header">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -54,7 +59,12 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_13">
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="a_header_label">
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+            </font>
+           </property>
            <property name="text">
             <string>Atendimento nº 00000000000000</string>
            </property>
@@ -64,7 +74,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="frame_19">
+          <widget class="QFrame" name="a_header_modelo">
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -73,19 +83,46 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_12">
             <item alignment="Qt::AlignRight">
-             <widget class="QLabel" name="label_8">
+             <widget class="QLabel" name="a_header_modelo_label">
+              <property name="font">
+               <font>
+                <family>Century Gothic</family>
+               </font>
+              </property>
               <property name="text">
                <string>Modelo de pedido:</string>
               </property>
              </widget>
             </item>
             <item alignment="Qt::AlignLeft">
-             <widget class="QComboBox" name="comboBox">
+             <widget class="QComboBox" name="a_header_modelo_combo">
               <property name="minimumSize">
                <size>
-                <width>90</width>
-                <height>0</height>
+                <width>114</width>
+                <height>22</height>
                </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QComboBox#a_header_modelo_combo {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+	padding: 2px;
+}
+QComboBox#a_header_modelo_combo::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 20px;
+ 
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+QComboBox#a_header_modelo_combo::down-arrow {
+    image: url(:/icons/icones/chevron-down.svg);
+	height: 20px
+}</string>
               </property>
              </widget>
             </item>
@@ -96,7 +133,7 @@
        </widget>
       </item>
       <item alignment="Qt::AlignTop">
-       <widget class="QFrame" name="frame_2">
+       <widget class="QFrame" name="b_cliente">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -126,7 +163,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QFrame" name="frame_3">
+          <widget class="QFrame" name="b_cliente_layout">
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -135,19 +172,44 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_10">
             <item alignment="Qt::AlignRight">
-             <widget class="QLabel" name="label">
+             <widget class="QLabel" name="b_cliente_label">
+              <property name="font">
+               <font>
+                <family>Century Gothic</family>
+               </font>
+              </property>
               <property name="text">
                <string>Cliente:</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_3">
+             <widget class="QLineEdit" name="b_cliente_campo">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Century Gothic</family>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit#b_cliente_campo {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+}</string>
               </property>
               <property name="placeholderText">
                <string>Nome do Cliente.</string>
@@ -155,7 +217,33 @@
              </widget>
             </item>
             <item alignment="Qt::AlignLeft">
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="b_cliente_botao">
+              <property name="minimumSize">
+               <size>
+                <width>70</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Century Gothic</family>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton#b_cliente_botao {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+}
+QPushButton#b_cliente_botao:pressed {
+    background-color: rgb(220, 220, 220);
+    border-style: inset;
+}
+
+</string>
+              </property>
               <property name="text">
                <string>Buscar</string>
               </property>
@@ -181,7 +269,7 @@
        </widget>
       </item>
       <item alignment="Qt::AlignTop">
-       <widget class="QFrame" name="frame_7">
+       <widget class="QFrame" name="c_adicionar">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -211,7 +299,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QFrame" name="frame_8">
+          <widget class="QFrame" name="layout_esq">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -226,17 +314,22 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
-             <widget class="QTabWidget" name="tabWidget">
+             <widget class="QTabWidget" name="esq_tab">
               <property name="minimumSize">
                <size>
                 <width>0</width>
                 <height>0</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Century Gothic</family>
+               </font>
+              </property>
               <property name="currentIndex">
                <number>0</number>
               </property>
-              <widget class="QWidget" name="tab">
+              <widget class="QWidget" name="tab_add">
                <attribute name="title">
                 <string>Adicionar</string>
                </attribute>
@@ -257,14 +350,14 @@
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="label_3">
+                 <widget class="QLabel" name="tab_add_1_label">
                   <property name="text">
                    <string>Adicionar Produtos:</string>
                   </property>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignTop">
-                 <widget class="QFrame" name="frame_12">
+                 <widget class="QFrame" name="tab_add_2">
                   <property name="frameShape">
                    <enum>QFrame::StyledPanel</enum>
                   </property>
@@ -273,13 +366,48 @@
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_15">
                    <item>
-                    <widget class="QComboBox" name="comboBox_2"/>
+                    <widget class="QComboBox" name="tab_add_2_combo">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>22</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox#tab_add_2_combo {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+	padding: 2px;
+}
+QComboBox#tab_add_2_combo::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 20px;
+ 
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+QComboBox#tab_add_2_combo::down-arrow {
+    image: url(:/icons/icones/chevron-down.svg);
+	height: 20px
+}</string>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignTop">
-                 <widget class="QFrame" name="frame_13">
+                 <widget class="QFrame" name="tab_add_3">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -294,14 +422,34 @@
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_16">
                    <item>
-                    <widget class="QLabel" name="label_4">
+                    <widget class="QLabel" name="tab_add_3_label">
                      <property name="text">
                       <string>Quantidade:</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="lineEdit">
+                    <widget class="QLineEdit" name="tab_add_3_campo">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>22</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLineEdit#tab_add_3_campo {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+}</string>
+                     </property>
                      <property name="placeholderText">
                       <string>Quantidade.</string>
                      </property>
@@ -311,7 +459,7 @@
                  </widget>
                 </item>
                 <item alignment="Qt::AlignTop">
-                 <widget class="QFrame" name="frame_14">
+                 <widget class="QFrame" name="tab_add_4">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -326,7 +474,38 @@
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_17">
                    <item>
-                    <widget class="QPushButton" name="pushButton_2">
+                    <widget class="QPushButton" name="tab_add_4_botao">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton#tab_add_4_botao {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+}
+QPushButton#tab_add_4_botao:pressed {
+    background-color: rgb(220, 220, 220);
+    border-style: inset;
+}
+</string>
+                     </property>
                      <property name="text">
                       <string>Adicionar</string>
                      </property>
@@ -341,7 +520,7 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="tab_2">
+              <widget class="QWidget" name="tab_rem">
                <attribute name="title">
                 <string>Remover</string>
                </attribute>
@@ -362,14 +541,14 @@
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="label_6">
+                 <widget class="QLabel" name="tab_rem_1_label">
                   <property name="text">
                    <string>Remover Produtos:</string>
                   </property>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignTop">
-                 <widget class="QFrame" name="frame_15">
+                 <widget class="QFrame" name="tab_rem_2">
                   <property name="frameShape">
                    <enum>QFrame::StyledPanel</enum>
                   </property>
@@ -378,13 +557,48 @@
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_18">
                    <item>
-                    <widget class="QComboBox" name="comboBox_3"/>
+                    <widget class="QComboBox" name="tab_rem_2_combo">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>22</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox#tab_rem_2_combo {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+	padding: 2px;
+}
+QComboBox#tab_rem_2_combo::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 20px;
+ 
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+QComboBox#tab_rem_2_combo::down-arrow {
+    image: url(:/icons/icones/chevron-down.svg);
+	height: 20px
+}</string>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignTop">
-                 <widget class="QFrame" name="frame_16">
+                 <widget class="QFrame" name="tab_rem_3">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -399,14 +613,34 @@
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_19">
                    <item>
-                    <widget class="QLabel" name="label_5">
+                    <widget class="QLabel" name="tab_rem_3_label">
                      <property name="text">
                       <string>Quantidade:</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="lineEdit_2">
+                    <widget class="QLineEdit" name="tab_rem_3_campo">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>22</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLineEdit#tab_rem_3_campo {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+}</string>
+                     </property>
                      <property name="placeholderText">
                       <string>Quantidade.</string>
                      </property>
@@ -416,7 +650,7 @@
                  </widget>
                 </item>
                 <item alignment="Qt::AlignTop">
-                 <widget class="QFrame" name="frame_17">
+                 <widget class="QFrame" name="tab_rem_4">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -431,7 +665,38 @@
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_20">
                    <item>
-                    <widget class="QPushButton" name="pushButton_3">
+                    <widget class="QPushButton" name="tab_rem_4_botao">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Century Gothic</family>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton#tab_rem_4_botao {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+}
+QPushButton#tab_rem_4_botao:pressed {
+    background-color: rgb(220, 220, 220);
+    border-style: inset;
+}
+</string>
+                     </property>
                      <property name="text">
                       <string>Remover</string>
                      </property>
@@ -479,7 +744,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="frame_9">
+          <widget class="QFrame" name="layout_dir">
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -488,12 +753,32 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_14">
             <item>
-             <widget class="QTextBrowser" name="textBrowser">
+             <widget class="QTextBrowser" name="campo_exibicao">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>255</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Century Gothic</family>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QTextBrowser#campo_exibicao {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+}</string>
               </property>
               <property name="placeholderText">
                <string>Lista com itens do pedido</string>
@@ -507,7 +792,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="frame_11">
+       <widget class="QFrame" name="d_obs">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -522,14 +807,28 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_12">
          <item>
-          <widget class="QLabel" name="label_7">
+          <widget class="QLabel" name="d_obs_label">
            <property name="text">
             <string>Observações:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QTextEdit" name="textEdit">
+          <widget class="QTextEdit" name="d_obs_obs">
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QTextEdit#d_obs_obs {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+}</string>
+           </property>
            <property name="placeholderText">
             <string>Observações gerais sobre o pedido.</string>
            </property>
@@ -539,7 +838,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="frame_18">
+       <widget class="QFrame" name="e_adicionar">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -548,7 +847,38 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_21">
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="e_adicionar_botao">
+           <property name="minimumSize">
+            <size>
+             <width>280</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>280</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton#e_adicionar_botao {
+    background-color: rgb(250,250,250);
+	border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+}
+QPushButton#e_adicionar_botao:pressed {
+    background-color: rgb(220, 220, 220);
+    border-style: inset;
+}
+</string>
+           </property>
            <property name="text">
             <string>Adicionar Pedido.</string>
            </property>

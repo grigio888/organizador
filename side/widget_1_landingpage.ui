@@ -59,11 +59,13 @@
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
           <widget class="QLabel" name="imagem">
-           <property name="text">
-            <string/>
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+            </font>
            </property>
-           <property name="pixmap">
-            <pixmap>logo.png</pixmap>
+           <property name="text">
+            <string>Bem Vindo!</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
