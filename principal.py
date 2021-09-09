@@ -46,6 +46,7 @@ class Login(QMainWindow):
         # -- gatilho para transitar para o main
         self.ui.login_botao.clicked.connect(self.avancar)
     
+
     def avancar(self):
         self.proximo.show()
         self.hide()
