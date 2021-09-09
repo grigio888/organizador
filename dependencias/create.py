@@ -1,10 +1,13 @@
+import sys
+sys.path.insert(0, './')
+
 import datetime, random, string
-from models_peewee import *
+from dependencias.models_peewee import *
 
 #tabela login
-login_1 = Login.create(login="Vinicius",senha='Teste',ultimo_login=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),nome_utilizador='teste',endereco_utilizador='asdsd')
-
-login_2 = Login.create(login="Esmeril",senha='Teste',ultimo_login=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),nome_utilizador='teste',endereco_utilizador='asdsd')
+login_1 = Login.create(login="grigio888",senha='kiju1475',ultimo_login=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),nome_utilizador='Vinicius',endereco_utilizador='asdsd')
+login_2 = Login.create(login="phzsantos",senha='esmerilhando',ultimo_login=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),nome_utilizador='Paulo',endereco_utilizador='asdsd')
+login_3 = Login.create(login="llemons",senha='123456789',ultimo_login=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),nome_utilizador='Emows',endereco_utilizador='asdsd')
 
 #tabela cliente
 cliente_1 = Cliente.create(nome="Teste",identidade=123456,endereco="vila velha",tel_1="123-456",tel_2="654-321")
@@ -27,6 +30,6 @@ def get_random_string(length):
 
 cod = get_random_string(15)
 
-pedido_1 = Pedido.create(criado_por=login_2.login,criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),cliente=cliente_1.identidade, produto=produto_1.id, quantidade=1, codigo=cod)
-pedido_2 = Pedido.create(criado_por=login_2.login,criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),cliente=cliente_1.identidade, produto=produto_2.id, quantidade=2, codigo=cod)
-pedido_3 = Pedido.create(criado_por=login_2.login,criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"),cliente=cliente_1.identidade, produto=produto_3.id, quantidade=3, codigo=cod)
+pedido_1 = Pedido.create(criado_por=login_2.login,criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"), modo=1, cliente=cliente_1.identidade, produto=produto_1.id, quantidade=1, codigo=cod)
+pedido_2 = Pedido.create(criado_por=login_2.login,criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"), modo=1, cliente=cliente_1.identidade, produto=produto_2.id, quantidade=2, codigo=cod)
+pedido_3 = Pedido.create(criado_por=login_2.login,criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"), modo=1, cliente=cliente_1.identidade, produto=produto_3.id, quantidade=3, codigo=cod)

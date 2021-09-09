@@ -1,6 +1,6 @@
 import peewee
 
-db = peewee.SqliteDatabase('database.db')
+db = peewee.SqliteDatabase('dependencias/database.db')
 
 
 #tabelas login, cliente, pedido, produtos, produtos_do_pedido

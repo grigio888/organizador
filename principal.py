@@ -2,12 +2,17 @@ import sys
 from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import Signal
 from dependencias.janelas import *
+from dependencias.models_peewee import *
 
 class Login(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_Login()
         self.ui.setupUi(self)
+
+        # - Modulos a serem utilizados:
+        self.db = Login()
+
 
         # - Transicao:
         self.proximo = Tela()

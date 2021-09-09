@@ -33,13 +33,13 @@ class FerramentaDatabase():
 if __name__ == "__main__":
 
     db = FerramentaDatabase(True)
-    #db.executando(f'select name from sqlite_master where type = "table"', True)
-    #print(db.resultado)
+    db.executando(f'select name from sqlite_master where type = "table"', True)
+    print(db.resultado)
     
 
-    db.executando('insert into login values ("admin", "admin", "00000000000", "00000000000", "administrator", "nowhere")')
-    db.executando('insert into cliente values ("1000", "Angolano", "12345678901", "Angola", "5527998881234", "0")')
-    db.executando('insert into produtos values ("1000", "01", "Troca de Algo", 15000)')
+    #db.executando('insert into login values ("admin", "admin", "00000000000", "00000000000", "administrator", "nowhere")')
+    #db.executando('insert into cliente values ("1000", "Angolano", "12345678901", "Angola", "5527998881234", "0")')
+    #db.executando('insert into produtos values ("1000", "01", "Troca de Algo", 15000)')
     
     #db
 
