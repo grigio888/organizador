@@ -1,10 +1,11 @@
+from logging import exception
 import sys
 from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import Signal
 from dependencias.janelas import *
 from dependencias.models_peewee import *
 
-class Login(QMainWindow):
+class WidgetLogin(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_Login()
@@ -53,8 +54,14 @@ class Login(QMainWindow):
     
 
     def avancar(self):
-        self.proximo.show()
-        self.hide()
+        try:
+            validador = self.db.get(Login.login == self.ui.login_campo.text())
+            if validador.senha == self.ui.senha_campo.text():
+                self.proximo.show()
+                self.hide()
+            else: raise Exception
+        except:
+            print('ta errado')
 
     def movendo_janela(self, mouse): # função prioridade global
         if not self.isMaximized():
@@ -75,9 +82,9 @@ class Tela(QMainWindow):
 
 
         # - Janelas a serem exibidas
-        self.landing_page = LandingPage(self)
-        self.pedido = Pedido(self)
-        self.cadastro_cliente = CadastroCliente(self)
+        self.landing_page = WidgetLandingPage(self)
+        self.pedido = WidgetPedido(self)
+        self.cadastro_cliente = WidgetCadastroCliente(self)
 
 
         # - Comportamento
@@ -197,9 +204,9 @@ class Tela(QMainWindow):
         self.exibindo_ocultando_menu()
 
 
-class LandingPage(QWidget):
+class WidgetLandingPage(QWidget):
     def __init__(self, parent=None):
-        super(LandingPage, self).__init__(parent)
+        super(WidgetLandingPage, self).__init__(parent)
 
         self.ui = Ui_LandingPage()
         self.ui.setupUi(self)
@@ -207,9 +214,9 @@ class LandingPage(QWidget):
         # - Comportamento
         self.hide()
 
-class Pedido(QWidget):
+class WidgetPedido(QWidget):
     def __init__(self, parent=None):
-        super(Pedido, self).__init__(parent)
+        super(WidgetPedido, self).__init__(parent)
 
         self.ui = Ui_Pedido()
         self.ui.setupUi(self)
@@ -218,17 +225,27 @@ class Pedido(QWidget):
         self.hide()
 
 
-class CadastroCliente(QWidget):
+class WidgetCadastroCliente(QWidget):
     def __init__(self, parent=None):
-        super(CadastroCliente, self).__init__(parent)
+        super(WidgetCadastroCliente, self).__init__(parent)
 
         self.ui = Ui_CadastroCliente()
         self.ui.setupUi(self)
 
-        # - Comportamento
+        # - Comportamento:
+        # -- cadastro de cliente:
+        self.criando_cadastro()
+
+
+        # -- iniciando escondido:
         self.hide()
 
+    def criando_cadastro(self):
+        self.dicionario = {}
+
+
+
 app = QApplication(sys.argv)
-janela = Login()
+janela = WidgetLogin()
 janela.show()
 sys.exit(app.exec_())
