@@ -1,4 +1,4 @@
-todo modulo tem que ter:
+todo arquivo ui deve ter:
 
 import os, sys
 sys.path.insert(0, './')

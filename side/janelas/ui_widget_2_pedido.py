@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'widget_2_pedidoIlLlCe.ui'
+## Form generated from reading UI file 'widget_2_pedidoaicQsR.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -18,6 +18,8 @@ from PySide2.QtWidgets import *
 import os, sys
 sys.path.insert(0, './')
 import side.icons_rc
+
+from side.janelas.padrao import *
 
 class Ui_Pedido(object):
     def setupUi(self, Pedido):
@@ -70,26 +72,7 @@ class Ui_Pedido(object):
         self.a_header_modelo_combo = QComboBox(self.a_header_modelo)
         self.a_header_modelo_combo.setObjectName(u"a_header_modelo_combo")
         self.a_header_modelo_combo.setMinimumSize(QSize(114, 22))
-        self.a_header_modelo_combo.setStyleSheet(u"QComboBox#a_header_modelo_combo {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"	padding: 2px;\n"
-"}\n"
-"QComboBox#a_header_modelo_combo::drop-down {\n"
-"	subcontrol-origin: padding;\n"
-"	subcontrol-position: top right;\n"
-"	width: 20px;\n"
-" \n"
-"	border-top-right-radius: 3px;\n"
-"	border-bottom-right-radius: 3px;\n"
-"}\n"
-"QComboBox#a_header_modelo_combo::down-arrow {\n"
-"    image: url(:/icons/icones/chevron-down.svg);\n"
-"	height: 20px\n"
-"}")
+        self.a_header_modelo_combo.setStyleSheet(estilo_combo_box())
 
         self.horizontalLayout_12.addWidget(self.a_header_modelo_combo, 0, Qt.AlignLeft)
 
@@ -133,13 +116,7 @@ class Ui_Pedido(object):
         self.b_cliente_campo.setSizePolicy(sizePolicy2)
         self.b_cliente_campo.setMinimumSize(QSize(0, 20))
         self.b_cliente_campo.setFont(font)
-        self.b_cliente_campo.setStyleSheet(u"QLineEdit#b_cliente_campo {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
+        self.b_cliente_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_10.addWidget(self.b_cliente_campo)
 
@@ -147,19 +124,7 @@ class Ui_Pedido(object):
         self.b_cliente_botao.setObjectName(u"b_cliente_botao")
         self.b_cliente_botao.setMinimumSize(QSize(70, 20))
         self.b_cliente_botao.setFont(font)
-        self.b_cliente_botao.setStyleSheet(u"QPushButton#b_cliente_botao {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton#b_cliente_botao:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}\n"
-"\n"
-"")
+        self.b_cliente_botao.setStyleSheet(estilo_push_button())
         icon = QIcon()
         icon.addFile(u":/icons/icones/search.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.b_cliente_botao.setIcon(icon)
@@ -223,26 +188,7 @@ class Ui_Pedido(object):
         sizePolicy4.setHeightForWidth(self.tab_add_2_combo.sizePolicy().hasHeightForWidth())
         self.tab_add_2_combo.setSizePolicy(sizePolicy4)
         self.tab_add_2_combo.setMinimumSize(QSize(0, 22))
-        self.tab_add_2_combo.setStyleSheet(u"QComboBox#tab_add_2_combo {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"	padding: 2px;\n"
-"}\n"
-"QComboBox#tab_add_2_combo::drop-down {\n"
-"	subcontrol-origin: padding;\n"
-"	subcontrol-position: top right;\n"
-"	width: 20px;\n"
-" \n"
-"	border-top-right-radius: 3px;\n"
-"	border-bottom-right-radius: 3px;\n"
-"}\n"
-"QComboBox#tab_add_2_combo::down-arrow {\n"
-"    image: url(:/icons/icones/chevron-down.svg);\n"
-"	height: 20px\n"
-"}")
+        self.tab_add_2_combo.setStyleSheet(estilo_combo_box())
 
         self.horizontalLayout_15.addWidget(self.tab_add_2_combo)
 
@@ -266,13 +212,7 @@ class Ui_Pedido(object):
         self.tab_add_3_campo.setObjectName(u"tab_add_3_campo")
         self.tab_add_3_campo.setMinimumSize(QSize(0, 22))
         self.tab_add_3_campo.setFont(font)
-        self.tab_add_3_campo.setStyleSheet(u"QLineEdit#tab_add_3_campo {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
+        self.tab_add_3_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_16.addWidget(self.tab_add_3_campo)
 
@@ -296,18 +236,7 @@ class Ui_Pedido(object):
         self.tab_add_4_botao.setSizePolicy(sizePolicy4)
         self.tab_add_4_botao.setMinimumSize(QSize(0, 25))
         self.tab_add_4_botao.setFont(font)
-        self.tab_add_4_botao.setStyleSheet(u"QPushButton#tab_add_4_botao {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton#tab_add_4_botao:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}\n"
-"")
+        self.tab_add_4_botao.setStyleSheet(estilo_push_button())
         icon1 = QIcon()
         icon1.addFile(u":/icons/icones/plus.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.tab_add_4_botao.setIcon(icon1)
@@ -340,26 +269,7 @@ class Ui_Pedido(object):
         sizePolicy4.setHeightForWidth(self.tab_rem_2_combo.sizePolicy().hasHeightForWidth())
         self.tab_rem_2_combo.setSizePolicy(sizePolicy4)
         self.tab_rem_2_combo.setMinimumSize(QSize(0, 22))
-        self.tab_rem_2_combo.setStyleSheet(u"QComboBox#tab_rem_2_combo {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"	padding: 2px;\n"
-"}\n"
-"QComboBox#tab_rem_2_combo::drop-down {\n"
-"	subcontrol-origin: padding;\n"
-"	subcontrol-position: top right;\n"
-"	width: 20px;\n"
-" \n"
-"	border-top-right-radius: 3px;\n"
-"	border-bottom-right-radius: 3px;\n"
-"}\n"
-"QComboBox#tab_rem_2_combo::down-arrow {\n"
-"    image: url(:/icons/icones/chevron-down.svg);\n"
-"	height: 20px\n"
-"}")
+        self.tab_rem_2_combo.setStyleSheet(estilo_combo_box())
 
         self.horizontalLayout_18.addWidget(self.tab_rem_2_combo)
 
@@ -383,13 +293,7 @@ class Ui_Pedido(object):
         self.tab_rem_3_campo.setObjectName(u"tab_rem_3_campo")
         self.tab_rem_3_campo.setMinimumSize(QSize(0, 22))
         self.tab_rem_3_campo.setFont(font)
-        self.tab_rem_3_campo.setStyleSheet(u"QLineEdit#tab_rem_3_campo {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
+        self.tab_rem_3_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_19.addWidget(self.tab_rem_3_campo)
 
@@ -410,18 +314,7 @@ class Ui_Pedido(object):
         self.tab_rem_4_botao.setSizePolicy(sizePolicy4)
         self.tab_rem_4_botao.setMinimumSize(QSize(0, 25))
         self.tab_rem_4_botao.setFont(font)
-        self.tab_rem_4_botao.setStyleSheet(u"QPushButton#tab_rem_4_botao {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton#tab_rem_4_botao:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}\n"
-"")
+        self.tab_rem_4_botao.setStyleSheet(estilo_push_button())
         icon2 = QIcon()
         icon2.addFile(u":/icons/icones/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.tab_rem_4_botao.setIcon(icon2)
@@ -464,13 +357,7 @@ class Ui_Pedido(object):
         self.campo_exibicao.setSizePolicy(sizePolicy6)
         self.campo_exibicao.setMinimumSize(QSize(255, 0))
         self.campo_exibicao.setFont(font)
-        self.campo_exibicao.setStyleSheet(u"QTextBrowser#campo_exibicao {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
+        self.campo_exibicao.setStyleSheet(estilo_text_browser())
 
         self.horizontalLayout_14.addWidget(self.campo_exibicao)
 
@@ -499,13 +386,7 @@ class Ui_Pedido(object):
         self.d_obs_obs = QTextEdit(self.d_obs)
         self.d_obs_obs.setObjectName(u"d_obs_obs")
         self.d_obs_obs.setFont(font)
-        self.d_obs_obs.setStyleSheet(u"QTextEdit#d_obs_obs {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
+        self.d_obs_obs.setStyleSheet(estilo_text_edit())
 
         self.verticalLayout_12.addWidget(self.d_obs_obs)
 
@@ -523,18 +404,7 @@ class Ui_Pedido(object):
         self.e_adicionar_botao.setMinimumSize(QSize(280, 25))
         self.e_adicionar_botao.setMaximumSize(QSize(280, 16777215))
         self.e_adicionar_botao.setFont(font)
-        self.e_adicionar_botao.setStyleSheet(u"QPushButton#e_adicionar_botao {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton#e_adicionar_botao:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}\n"
-"")
+        self.e_adicionar_botao.setStyleSheet(estilo_push_button())
 
         self.horizontalLayout_21.addWidget(self.e_adicionar_botao)
 

@@ -13,6 +13,7 @@ import side.icons_rc
 from side.janelas.ui_main import *
 from side.janelas.ui_widget_1_landingpage import *
 from side.janelas.ui_widget_2_pedido import *
+from side.janelas.ui_widget_3_cadastro_cliente import *
 
 if __name__ == '__main__':
     pass

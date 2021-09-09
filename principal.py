@@ -13,6 +13,7 @@ class Tela(QMainWindow):
         # - Janelas a serem exibidas
         self.landing_page = LandingPage(self)
         self.pedido = Pedido(self)
+        self.cadastro_cliente = CadastroCliente(self)
 
 
         # - Comportamento
@@ -47,6 +48,7 @@ class Tela(QMainWindow):
         self.ui.verticalLayout.addWidget(self.landing_page, 0, Qt.AlignCenter)
         self.landing_page.show()
         self.ui.verticalLayout.addWidget(self.pedido, 0, Qt.AlignCenter)
+        self.ui.verticalLayout.addWidget(self.cadastro_cliente, 0, Qt.AlignCenter)
 
 
         # - Eventos
@@ -65,6 +67,7 @@ class Tela(QMainWindow):
 
         # -- gatilhos para exibicao dos contextos no corpo
         self.ui.b_botao_pedido.clicked.connect(self.exibir_pedido)
+        self.ui.c_botao_cliente.clicked.connect(self.exibir_cliente)
 
         # -- função de controle do tamanho da janela.
         QSizeGrip(self.ui.espacador_2)
@@ -104,10 +107,10 @@ class Tela(QMainWindow):
         self.animacao.setEasingCurve(QtCore.QEasingCurve.InOutQuint)
 
         self.animacao2 = QPropertyAnimation(self.ui.b_menu_inferior, b'maximumHeight')
-        self.animacao2.setDuration(700)
+        self.animacao2.setDuration(500)
         self.animacao2.setStartValue(self.ui.b_menu_inferior.height())
         self.animacao2.setEndValue(nova_altura2)
-        #self.animacao2.setEasingCurve(QtCore.QEasingCurve.InOutQuint)
+        self.animacao2.setEasingCurve(QtCore.QEasingCurve.InOutQuint)
 
         self.animacao.start()
         self.animacao2.start()
@@ -115,11 +118,20 @@ class Tela(QMainWindow):
     def exibir_landing_page(self):
         self.landing_page.show()
         self.pedido.hide()
+        self.cadastro_cliente.hide()
 
     def exibir_pedido(self):
-        self.pedido.show()
         self.landing_page.hide()
+        self.pedido.show()
+        self.cadastro_cliente.hide()
         self.exibindo_ocultando_menu()
+
+    def exibir_cliente(self):
+        self.landing_page.hide()
+        self.pedido.hide()
+        self.cadastro_cliente.show()
+        self.exibindo_ocultando_menu()
+
 
 class LandingPage(QWidget):
     def __init__(self, parent=None):
@@ -136,6 +148,17 @@ class Pedido(QWidget):
         super(Pedido, self).__init__(parent)
 
         self.ui = Ui_Pedido()
+        self.ui.setupUi(self)
+
+        # - Comportamento
+        self.hide()
+
+
+class CadastroCliente(QWidget):
+    def __init__(self, parent=None):
+        super(CadastroCliente, self).__init__(parent)
+
+        self.ui = Ui_CadastroCliente()
         self.ui.setupUi(self)
 
         # - Comportamento

@@ -103,7 +103,7 @@
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">QComboBox#a_header_modelo_combo {
+               <string notr="true">QComboBox{
     background-color: rgb(250,250,250);
 	border-style: outset;
     border-width: 1px;
@@ -111,7 +111,7 @@
     border-radius: 3px;
 	padding: 2px;
 }
-QComboBox#a_header_modelo_combo::drop-down {
+QComboBox::drop-down {
 	subcontrol-origin: padding;
 	subcontrol-position: top right;
 	width: 20px;
@@ -119,7 +119,7 @@ QComboBox#a_header_modelo_combo::drop-down {
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
 }
-QComboBox#a_header_modelo_combo::down-arrow {
+QComboBox::down-arrow {
     image: url(:/icons/icones/chevron-down.svg);
 	height: 20px
 }</string>
