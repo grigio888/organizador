@@ -10,6 +10,7 @@ import os, sys
 sys.path.insert(0, './')
 import side.icons_rc
 
+from side.janelas.ui_a_login import *
 from side.janelas.ui_main import *
 from side.janelas.ui_widget_1_landingpage import *
 from side.janelas.ui_widget_2_pedido import *

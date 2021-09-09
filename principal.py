@@ -3,6 +3,64 @@ from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import Signal
 from dependencias.janelas import *
 
+class Login(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Login()
+        self.ui.setupUi(self)
+
+        # - Transicao:
+        self.proximo = Tela()
+        self.proximo.hide()
+
+
+        # - Comportamento
+        # -- retirada do frame padrão do Windows.
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+        # -- adicionar sombra à janela principal.
+        self.sombra = QGraphicsDropShadowEffect(self)
+        self.sombra.setBlurRadius(50)
+        self.sombra.setXOffset(0)
+        self.sombra.setYOffset(0)
+        self.sombra.setColor(QColor(0,92,157,550))
+        self.ui.centralwidget.setGraphicsEffect(self.sombra)
+
+        # -- adicionar icone e titulo à pagina.
+        self.setWindowIcon(QtGui.QIcon(':/icons/icones/basket.svg'))
+        self.setWindowTitle('Organizador')
+
+        # -- retirada de sombra dos botões.
+        self.estilo = "QPushButton:pressed{background-color: none; color: none; border: none;}"
+        self.ui.login_botao.setStyleSheet(self.estilo)
+
+
+        # - Eventos
+        # -- função de arrastar a janela ao clicar no titulo.
+        self.ui.para_arrastar.mouseMoveEvent = self.movendo_janela
+        
+        # -- função basica de controle da janela.
+        self.ui.c_fechar.clicked.connect(lambda: self.close())
+
+        # -- gatilho para transitar para o main
+        self.ui.login_botao.clicked.connect(self.avancar)
+    
+    def avancar(self):
+        self.proximo.show()
+        self.hide()
+
+    def movendo_janela(self, mouse): # função prioridade global
+        if not self.isMaximized():
+            if mouse.buttons() == Qt.LeftButton:
+                self.move(self.pos() + mouse.globalPos() - self.posicao_mouse)
+                self.posicao_mouse = mouse.globalPos()
+                mouse.accept()
+    
+    def mousePressEvent(self, event): # função prioridade global
+        self.posicao_mouse = event.globalPos()
+
+
 class Tela(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -165,6 +223,6 @@ class CadastroCliente(QWidget):
         self.hide()
 
 app = QApplication(sys.argv)
-janela = Tela()
+janela = Login()
 janela.show()
 sys.exit(app.exec_())
