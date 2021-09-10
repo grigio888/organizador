@@ -11,7 +11,7 @@ class BaseModel(peewee.Model):
         database=db
 
 
-class Login(BaseModel):
+class PeeweeLogin(BaseModel):
 
     login = peewee.CharField(unique=True)
     senha = peewee.CharField()
@@ -24,7 +24,7 @@ class Login(BaseModel):
         table_name = 'Login'
 
 
-class Cliente(BaseModel):
+class PeeweeCliente(BaseModel):
     # id já é criado automaticamente
     nome = peewee.CharField()
     #cpf sem caracteres especiais
@@ -36,7 +36,7 @@ class Cliente(BaseModel):
         database = db
         table_name = 'Cliente'
 
-class Produto(BaseModel):
+class PeeweeProduto(BaseModel):
     nome = peewee.CharField()
     # 0 para material 1 para servico
     tipo = peewee.BooleanField()
@@ -45,15 +45,15 @@ class Produto(BaseModel):
         database = db
         table_name = 'Produto'
 
-class Pedido(BaseModel):
+class PeeweePedido(BaseModel):
     #chave estrangeira tabela Login para obter nome do vendedor
-    criado_por = peewee.ForeignKeyField(Login)
+    criado_por = peewee.ForeignKeyField(PeeweeLogin)
     criado_em = peewee.DateTimeField()
     modo = peewee.BooleanField()  # Pedido de compra ou orçamento.
     
     #obter nome do cliente
-    cliente = peewee.ForeignKeyField(Cliente)
-    produto = peewee.ForeignKeyField(Produto)
+    cliente = peewee.ForeignKeyField(PeeweeCliente)
+    produto = peewee.ForeignKeyField(PeeweeProduto)
     quantidade = peewee.IntegerField()
     #codigo do pedido com todos os itens cadastrados vinculados a sessão e FOR
     codigo = peewee.TextField()
@@ -64,6 +64,6 @@ class Pedido(BaseModel):
 
 if __name__ == '__main__':
 
-    for item in [Login, Cliente, Pedido, Produto]:
+    for item in [PeeweeLogin, PeeweeCliente, PeeweePedido, PeeweeProduto]:
         try: item.create_table()
         except peewee.OperationalError: print(f"Tabela {item} ja existe!")

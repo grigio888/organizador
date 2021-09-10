@@ -67,6 +67,7 @@ class Ui_Login(object):
 "    border-color: rgb(200,200,200);\n"
 "    border-radius: 3px;\n"
 "}")
+        self.senha_campo.setEchoMode(QLineEdit.Password)
         self.senha_campo.setAlignment(Qt.AlignCenter)
         self.login_botao = QPushButton(self.centralwidget)
         self.login_botao.setObjectName(u"login_botao")

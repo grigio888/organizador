@@ -5,8 +5,8 @@ import datetime
 from dependencias.models_peewee import *
 
 #read um registro
-login = Login.get(Login.login == "grigio888").get()
-print([login.id, login.login, login.senha, login.ultimo_login]) 
+cliente = PeeweeCliente.get(PeeweeCliente.nome == "Hermione Granger")
+print([cliente.nome, cliente.identidade]) 
 
 #update
 #login.author = "esmeril"

@@ -4,6 +4,7 @@ from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import Signal
 from dependencias.janelas import *
 from dependencias.models_peewee import *
+from dependencias.erros import *
 
 class WidgetLogin(QMainWindow):
     def __init__(self):
@@ -12,7 +13,7 @@ class WidgetLogin(QMainWindow):
         self.ui.setupUi(self)
 
         # - Modulos a serem utilizados:
-        self.db = Login()
+        self.db = PeeweeLogin()
 
 
         # - Transicao:
@@ -55,7 +56,7 @@ class WidgetLogin(QMainWindow):
 
     def avancar(self):
         try:
-            validador = self.db.get(Login.login == self.ui.login_campo.text())
+            validador = self.db.get(PeeweeLogin.login == self.ui.login_campo.text())
             if validador.senha == self.ui.senha_campo.text():
                 self.proximo.show()
                 self.hide()
@@ -229,23 +230,92 @@ class WidgetCadastroCliente(QWidget):
     def __init__(self, parent=None):
         super(WidgetCadastroCliente, self).__init__(parent)
 
-        self.ui = Ui_CadastroCliente()
+        self.ui = Ui_cadastro_cliente()
         self.ui.setupUi(self)
 
+        self.cliente = PeeweeCliente()
+
         # - Comportamento:
-        # -- cadastro de cliente:
-        self.criando_cadastro()
-
-
+        # -- zerando os campos dos formularios:
+        self.zerando_cliente()
+        
         # -- iniciando escondido:
         self.hide()
 
+
+        # - Sinais:
+        # -- disparando função de adicionar cadastro:
+        self.ui.add_f_cadastrar_botao.clicked.connect(self.criando_cadastro)
+
+        # -- disparando função de atualizar cadastro:
+        self.ui.att_a_cliente_botao.clicked.connect(lambda: self.buscando_cadastro('att'))
+        self.ui.att_h_atualizar_botao.clicked.connect(self.atualizando_cadastro)
+        
+
+    def zerando_cliente(self):
+        itens = [
+            self.ui.add_a_nome_campo,
+            self.ui.add_b_id_campo,
+            self.ui.add_c_end_campo,
+            self.ui.add_d_tel_1_campo,
+            self.ui.add_e_tel_2_campo
+        ]
+
+        for item in itens:
+            item.setText('')
+
+    def checando_campos_adicionar(self):
+        if len(self.ui.add_a_nome_campo.text()) < 10:
+            raise ClienteNomeNaoValido('Nome não válido.')
+        elif len(self.ui.add_b_id_campo.text()) < 10 or not self.ui.add_b_id_campo.text().replace('-','').replace('.','').isdigit:
+            raise ClienteIDNaoValido('ID não válido.')
+        elif len(self.ui.add_c_end_campo.text()) < 10:
+            raise ClienteEnderecoNaoValido('Endereço não válido.')
+        elif len(self.ui.add_d_tel_1_campo.text()) < 9 or not self.ui.add_d_tel_1_campo.text().isdigit():
+            raise ClienteEnderecoNaoValido('Telefone não válido.')
+
     def criando_cadastro(self):
-        self.dicionario = {}
+        try:
+            self.checando_campos_adicionar()
+            self.cliente.create(
+                nome = self.ui.add_a_nome_campo.text(),
+                identidade = self.ui.add_b_id_campo.text().replace('-','').replace('.',''),
+                endereco = self.ui.add_c_end_campo.text(),
+                tel_1 = self.ui.add_d_tel_1_campo.text(),
+                tel_2 = self.ui.add_e_tel_2_campo.text()
+            )
+            self.zerando_cliente()
+            print('inserido')
+        except Exception as e:
+            print(e)
+
+    def buscando_cadastro(self, campo):
+        if campo == 'att':
+            busca = self.ui.att_a_cliente_campo.text()
+        elif campo == 'rem':
+            busca = self.ui.rem_a_cliente_botao.text()
+
+        try:
+            comparativo = PeeweeCliente.get(PeeweeCliente.nome == busca)
+        except:
+            print('não é nome')
+            try:
+                comparativo = PeeweeCliente.get(PeeweeCliente.identidade == busca)
+            except:
+                print('nao é id')
+
+        self.ui.att_c_nome_campo.setText(f'{comparativo.nome}')
+        self.ui.att_d_id_campo.setText(f'{comparativo.identidade}')
+        self.ui.att_e_end_campo.setText(f'{comparativo.endereco}')
+        self.ui.att_f_tel_1_campo.setText(f'{comparativo.tel_1}')
+        self.ui.att_g_tel_2_campo.setText(f'{comparativo.tel_2}')
+
+    def atualizando_cadastro(self):
+        pass
 
 
 
 app = QApplication(sys.argv)
-janela = WidgetLogin()
+janela = WidgetCadastroCliente()
 janela.show()
 sys.exit(app.exec_())

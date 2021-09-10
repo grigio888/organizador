@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>cadastro_cliente</class>
+ <widget class="QWidget" name="cadastro_cliente">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>cadastro_cliente</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -68,7 +68,7 @@
       <item>
        <widget class="QTabWidget" name="guia">
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="guia_adicionar">
          <attribute name="title">
@@ -91,7 +91,7 @@
            <number>0</number>
           </property>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="a_frame_nome">
+           <widget class="QFrame" name="add_a_nome">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -100,7 +100,7 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_10">
              <item>
-              <widget class="QLabel" name="a_frame_nome_label">
+              <widget class="QLabel" name="add_a_nome_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -113,7 +113,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="a_frame_nome_campo">
+              <widget class="QLineEdit" name="add_a_nome_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -138,7 +138,7 @@
            </widget>
           </item>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="b_frame_id">
+           <widget class="QFrame" name="add_b_id">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -153,7 +153,7 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_11">
              <item>
-              <widget class="QLabel" name="b_frame_id_label">
+              <widget class="QLabel" name="add_b_id_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -166,7 +166,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="b_frame_id_campo">
+              <widget class="QLineEdit" name="add_b_id_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -191,7 +191,7 @@
            </widget>
           </item>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="c_frame_endereco">
+           <widget class="QFrame" name="add_c_end">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -206,7 +206,7 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_12">
              <item>
-              <widget class="QLabel" name="c_frame_endereco_label">
+              <widget class="QLabel" name="add_c_end_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -219,7 +219,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="c_frame_endereco_campo">
+              <widget class="QLineEdit" name="add_c_end_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -244,7 +244,7 @@
            </widget>
           </item>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="d_frame_tel_1">
+           <widget class="QFrame" name="add_d_tel_1">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -259,7 +259,7 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_13">
              <item>
-              <widget class="QLabel" name="d_frame_tel_1_label">
+              <widget class="QLabel" name="add_d_tel_1_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -272,7 +272,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="d_frame_tel_1_campo">
+              <widget class="QLineEdit" name="add_d_tel_1_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -297,7 +297,7 @@
            </widget>
           </item>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="e_frame_tel_2">
+           <widget class="QFrame" name="add_e_tel_2">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -312,7 +312,7 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_14">
              <item>
-              <widget class="QLabel" name="e_frame_tel_2_label">
+              <widget class="QLabel" name="add_e_tel_2_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -325,7 +325,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="e_frame_tel_2_campo">
+              <widget class="QLineEdit" name="add_e_tel_2_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -360,7 +360,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="f_frame_cadastrar">
+           <widget class="QFrame" name="add_f_cadastrar">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -369,7 +369,7 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_15">
              <item>
-              <widget class="QPushButton" name="f_frame_cadastrar_botao">
+              <widget class="QPushButton" name="add_f_cadastrar_botao">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -400,7 +400,7 @@ QPushButton:pressed {
                 <string>Cadastrar</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset resource="../icons.qrc">
                  <normaloff>:/icons/icones/checkmark.svg</normaloff>:/icons/icones/checkmark.svg</iconset>
                </property>
               </widget>
@@ -431,7 +431,7 @@ QPushButton:pressed {
            <number>0</number>
           </property>
           <item>
-           <widget class="QFrame" name="frame_17">
+           <widget class="QFrame" name="att_a_cliente">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -446,14 +446,14 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_26">
              <item>
-              <widget class="QLabel" name="label_17">
+              <widget class="QLabel" name="att_a_cliente_label">
                <property name="text">
                 <string>Cliente:</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_16">
+              <widget class="QLineEdit" name="att_a_cliente_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -475,7 +475,7 @@ QPushButton:pressed {
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="att_a_cliente_botao">
                <property name="minimumSize">
                 <size>
                  <width>70</width>
@@ -501,7 +501,7 @@ QPushButton:pressed {
                 <string>Buscar</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset resource="../icons.qrc">
                  <normaloff>:/icons/icones/search.svg</normaloff>:/icons/icones/search.svg</iconset>
                </property>
                <property name="iconSize">
@@ -516,7 +516,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_16">
+           <widget class="QFrame" name="att_b_espacador">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -541,7 +541,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="frame_14">
+           <widget class="QFrame" name="att_c_nome">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -556,7 +556,7 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_24">
              <item>
-              <widget class="QLabel" name="label_15">
+              <widget class="QLabel" name="att_c_nome_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -569,7 +569,7 @@ QPushButton:pressed {
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_14">
+              <widget class="QLineEdit" name="att_c_nome_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -594,7 +594,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_15">
+           <widget class="QFrame" name="att_d_id">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -615,7 +615,7 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_25">
              <item>
-              <widget class="QLabel" name="label_16">
+              <widget class="QLabel" name="att_d_id_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -628,7 +628,7 @@ QPushButton:pressed {
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_15">
+              <widget class="QLineEdit" name="att_d_id_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -653,7 +653,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="frame_12">
+           <widget class="QFrame" name="att_e_end">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -674,7 +674,7 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_22">
              <item>
-              <widget class="QLabel" name="label_13">
+              <widget class="QLabel" name="att_e_end_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -687,7 +687,7 @@ QPushButton:pressed {
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_12">
+              <widget class="QLineEdit" name="att_e_end_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -712,7 +712,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="frame_13">
+           <widget class="QFrame" name="att_f_tel_1">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -733,7 +733,7 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_23">
              <item>
-              <widget class="QLabel" name="label_14">
+              <widget class="QLabel" name="att_f_tel_1_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -746,7 +746,7 @@ QPushButton:pressed {
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_13">
+              <widget class="QLineEdit" name="att_f_tel_1_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -771,7 +771,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="frame_11">
+           <widget class="QFrame" name="att_g_tel_2">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -792,7 +792,7 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_21">
              <item>
-              <widget class="QLabel" name="label_12">
+              <widget class="QLabel" name="att_g_tel_2_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -805,7 +805,7 @@ QPushButton:pressed {
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_11">
+              <widget class="QLineEdit" name="att_g_tel_2_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -836,7 +836,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item alignment="Qt::AlignBottom">
-           <widget class="QFrame" name="frame_18">
+           <widget class="QFrame" name="att_h_atualizar">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -851,7 +851,7 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_28">
              <item>
-              <widget class="QPushButton" name="pushButton_3">
+              <widget class="QPushButton" name="att_h_atualizar_botao">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -877,7 +877,7 @@ QPushButton:pressed {
                 <string>Atualizar</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset resource="../icons.qrc">
                  <normaloff>:/icons/icones/retweet.svg</normaloff>:/icons/icones/retweet.svg</iconset>
                </property>
               </widget>
@@ -893,7 +893,7 @@ QPushButton:pressed {
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="frame_21">
+           <widget class="QFrame" name="rem_a_cliente">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -908,7 +908,7 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_31">
              <item>
-              <widget class="QLabel" name="label_18">
+              <widget class="QLabel" name="rem_a_cliente_label">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -921,7 +921,7 @@ QPushButton:pressed {
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_17">
+              <widget class="QLineEdit" name="rem_a_cliente_campo">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -943,7 +943,7 @@ QPushButton:pressed {
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_5">
+              <widget class="QPushButton" name="rem_a_cliente_botao">
                <property name="minimumSize">
                 <size>
                  <width>70</width>
@@ -969,7 +969,7 @@ QPushButton:pressed {
                 <string>Buscar</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset resource="../icons.qrc">
                  <normaloff>:/icons/icones/search.svg</normaloff>:/icons/icones/search.svg</iconset>
                </property>
                <property name="iconSize">
@@ -984,7 +984,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item alignment="Qt::AlignBottom">
-           <widget class="QFrame" name="frame_20">
+           <widget class="QFrame" name="rem_b_ciente">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -1005,7 +1005,7 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_30">
              <item>
-              <widget class="QCheckBox" name="checkBox">
+              <widget class="QCheckBox" name="rem_b_ciente_checkbox">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -1029,7 +1029,7 @@ QPushButton:pressed {
            </widget>
           </item>
           <item alignment="Qt::AlignBottom">
-           <widget class="QFrame" name="frame_19">
+           <widget class="QFrame" name="rem_c_remover">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -1044,7 +1044,7 @@ QPushButton:pressed {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_29">
              <item>
-              <widget class="QPushButton" name="pushButton_4">
+              <widget class="QPushButton" name="rem_c_remover_botao">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -1070,7 +1070,7 @@ QPushButton:pressed {
                 <string>Remover</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset resource="../icons.qrc">
                  <normaloff>:/icons/icones/tag-delete.svg</normaloff>:/icons/icones/tag-delete.svg</iconset>
                </property>
               </widget>
@@ -1088,7 +1088,7 @@ QPushButton:pressed {
   </layout>
  </widget>
  <resources>
-  <include location="icons.qrc"/>
+  <include location="../icons.qrc"/>
  </resources>
  <connections/>
 </ui>
