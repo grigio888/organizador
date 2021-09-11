@@ -316,6 +316,6 @@ class WidgetCadastroCliente(QWidget):
 
 
 app = QApplication(sys.argv)
-janela = WidgetCadastroCliente()
+janela = WidgetLogin()
 janela.show()
 sys.exit(app.exec_())
