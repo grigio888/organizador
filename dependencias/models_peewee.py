@@ -62,8 +62,34 @@ class PeeweePedido(BaseModel):
         database = db
         table_name = 'Pedido'
 
+class PeeweeStatusPedido(BaseModel):
+    #chave estrangeira tabela Pedido
+    codigo = peewee.ForeignKeyField(PeeweePedido)
+    criado_por = peewee.ForeignKeyField(PeeweeLogin)
+    criado_em = peewee.DateTimeField()
+    concluido_em = peewee.DateTimeField()
+    #status 0 - cancelado, 1 - em andamento, 2 - concluido
+    status = peewee.ForeignKeyField(PeeweeStatus)  
+
+    class Meta:
+        database = db
+        table_name = 'Status_pedido'
+
+class PeeweeStatus(BaseModel):
+    status = peewee.TextField()
+    numero = peewee.IntegerField()
+
+    class Meta:
+        database = db
+        table_name = 'Status'
+
 if __name__ == '__main__':
 
-    for item in [PeeweeLogin, PeeweeCliente, PeeweePedido, PeeweeProduto]:
+    for item in [PeeweeLogin, PeeweeCliente, PeeweePedido, PeeweeProduto, PeeweeStatus, PeeweeStatusPedido]:
         try: item.create_table()
         except peewee.OperationalError: print(f"Tabela {item} ja existe!")
+
+    #criacao dos registros de status na criacao do banco
+    list_status = ['Cancelado','Em andamento','Concluido']
+    for numero,status in enumerate(list_status):
+        register_status = PeeweeStatus.create(status=status,numero=numero)
