@@ -62,6 +62,14 @@ class PeeweePedido(BaseModel):
         database = db
         table_name = 'Pedido'
 
+class PeeweeStatus(BaseModel):
+    status = peewee.TextField()
+    numero = peewee.IntegerField()
+
+    class Meta:
+        database = db
+        table_name = 'Status'
+
 class PeeweeStatusPedido(BaseModel):
     #chave estrangeira tabela Pedido
     codigo = peewee.ForeignKeyField(PeeweePedido)
@@ -74,14 +82,6 @@ class PeeweeStatusPedido(BaseModel):
     class Meta:
         database = db
         table_name = 'Status_pedido'
-
-class PeeweeStatus(BaseModel):
-    status = peewee.TextField()
-    numero = peewee.IntegerField()
-
-    class Meta:
-        database = db
-        table_name = 'Status'
 
 if __name__ == '__main__':
 
