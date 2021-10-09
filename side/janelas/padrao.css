@@ -1,0 +1,60 @@
+QComboBox {
+    background-color: rgb(250,250,250);
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+    padding: 2px;
+    font: 8pt "Century Gothic";
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px
+}
+QComboBox::down-arrow {
+    image: url(:/icons/icones/chevron-down.svg);
+    height: 20px
+}
+
+QLineEdit {
+    background-color: rgb(250,250,250);
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+    font: 8pt "Century Gothic";
+}
+
+QPushButton {
+    background-color: rgb(250,250,250);
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+    font: 8pt "Century Gothic";
+}
+QPushButton::pressed {
+    background-color: rgb(220, 220, 220);
+    border-style: inset
+}
+
+QTextBrowser {
+    background-color: rgb(250,250,250);
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+    font: 8pt "Century Gothic";
+}
+
+QTextEdit {
+    background-color: rgb(250,250,250);
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+    font: 8pt "Century Gothic";
+}

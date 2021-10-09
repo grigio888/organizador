@@ -10,11 +10,13 @@ import os, sys
 sys.path.insert(0, './')
 import side.icons_rc
 
-from side.janelas.ui_a_login import *
-from side.janelas.ui_main import *
-from side.janelas.ui_widget_1_landingpage import *
-from side.janelas.ui_widget_2_pedido import *
-from side.janelas.ui_widget_3_cadastro_cliente import *
+from side.janelas.ui_a_login import Ui_Login
+from side.janelas.ui_main import Ui_Organizador
+from side.janelas.ui_widget_1_landingpage import Ui_LandingPage
+from side.janelas.ui_widget_2_pedido import Ui_Pedido
+from side.janelas.ui_widget_3_cadastro_cliente import Ui_cadastro_cliente
+from side.janelas.ui_janela_aviso import Ui_MainWindow
+from side.janelas.ui_widget_4_cadastro_item import Ui_cadastro_item
 
 if __name__ == '__main__':
     pass

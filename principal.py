@@ -86,6 +86,7 @@ class Tela(QMainWindow):
         self.landing_page = WidgetLandingPage(self)
         self.pedido = WidgetPedido(self)
         self.cadastro_cliente = WidgetCadastroCliente(self)
+        self.cadastro_item = WidgetCadastroItem(self)
 
 
         # - Comportamento
@@ -121,6 +122,7 @@ class Tela(QMainWindow):
         self.landing_page.show()
         self.ui.verticalLayout.addWidget(self.pedido, 0, Qt.AlignCenter)
         self.ui.verticalLayout.addWidget(self.cadastro_cliente, 0, Qt.AlignCenter)
+        self.ui.verticalLayout.addWidget(self.cadastro_item, 0, Qt.AlignCenter)
 
 
         # - Eventos
@@ -140,6 +142,7 @@ class Tela(QMainWindow):
         # -- gatilhos para exibicao dos contextos no corpo
         self.ui.b_botao_pedido.clicked.connect(self.exibir_pedido)
         self.ui.c_botao_cliente.clicked.connect(self.exibir_cliente)
+        self.ui.d_botao_item.clicked.connect(self.exibir_item)
 
         # -- função de controle do tamanho da janela.
         QSizeGrip(self.ui.espacador_2)
@@ -191,17 +194,27 @@ class Tela(QMainWindow):
         self.landing_page.show()
         self.pedido.hide()
         self.cadastro_cliente.hide()
+        self.cadastro_item.hide()
 
     def exibir_pedido(self):
         self.landing_page.hide()
         self.pedido.show()
         self.cadastro_cliente.hide()
+        self.cadastro_item.hide()
         self.exibindo_ocultando_menu()
 
     def exibir_cliente(self):
         self.landing_page.hide()
         self.pedido.hide()
         self.cadastro_cliente.show()
+        self.cadastro_item.hide()
+        self.exibindo_ocultando_menu()
+
+    def exibir_item(self):
+        self.landing_page.hide()
+        self.pedido.hide()
+        self.cadastro_cliente.hide()
+        self.cadastro_item.show()
         self.exibindo_ocultando_menu()
 
 
@@ -385,6 +398,158 @@ class WidgetCadastroCliente(QWidget):
             except Exception as erro:
                 self.aviso.ui.label_2.setText('Cheque a caixa de ciente para confirmar a exclusão.')
                 self.aviso.show()
+
+
+class WidgetCadastroItem(QWidget):
+    def __init__(self, parent=None):
+        super(WidgetCadastroItem, self).__init__(parent)
+
+        self.ui = Ui_cadastro_item()
+        self.ui.setupUi(self)
+
+        self.cliente = PeeweeProduto()
+        self.aviso = JanelaAviso()
+
+        # - Comportamento:
+        # -- zerando os campos dos formularios:
+        self.zerando_campos()
+        self.ui.rem_c_remover_botao.setEnabled(False)
+        
+        # -- iniciando escondido:
+        self.hide()
+
+
+        # - Sinais:
+        # -- disparando função de adicionar item:
+        self.ui.add_f_cadastrar_botao.clicked.connect(self.criando_cadastro)
+
+        # -- disparando função de atualizar item:
+        self.ui.att_a_produto_botao.clicked.connect(lambda: self.buscando_cadastro('att'))
+        self.ui.att_h_atualizar_botao.clicked.connect(self.atualizando_cadastro)
+        
+        # -- disparando função de remover item:
+        self.ui.rem_a_produto_botao.clicked.connect(lambda: self.excluindo_cadastro(1))
+        self.ui.rem_c_remover_botao.clicked.connect(lambda: self.excluindo_cadastro(2))
+
+
+    def zerando_campos(self):
+        itens = [
+            self.ui.add_a_produto_campo,
+            self.ui.add_d_preco_campo,
+            self.ui.att_a_produto_campo,
+            self.ui.att_c_nome_campo,
+            self.ui.att_d_id_campo,
+            self.ui.att_f_preco_campo,
+            self.ui.rem_a_produto_campo
+        ]
+
+        for item in itens:
+            item.setText('')
+
+    def checando_campos_adicionar(self):
+        if len(self.ui.add_a_nome_campo.text()) < 10:
+            raise ClienteNomeNaoValido('Nome não válido.')
+        elif len(self.ui.add_b_id_campo.text()) < 10 or not self.ui.add_b_id_campo.text().replace('-','').replace('.','').isdigit:
+            raise ClienteIDNaoValido('ID não válido.')
+        elif len(self.ui.add_c_end_campo.text()) < 10:
+            raise ClienteEnderecoNaoValido('Endereço não válido.')
+        elif len(self.ui.add_d_tel_1_campo.text()) < 9 or not self.ui.add_d_tel_1_campo.text().isdigit():
+            raise ClienteEnderecoNaoValido('Telefone não válido.')
+
+    def criando_cadastro(self):
+        try:
+            self.checando_campos_adicionar()
+            self.cliente.create(
+                nome = self.ui.add_a_produto_campo.text(),
+                tipo = self.ui.add_b_tipo_lista.currentIndex(),
+                preco = self.ui.add_d_preco_campo.text()
+            )
+            self.zerando_campos()
+            self.aviso.ui.label_2.setText('Cadastro de Item bem-sucedido.')
+            self.aviso.show()
+        except Exception as e:
+            self.aviso.ui.label_2.setText(f'Erro ao realizar o cadastro.\nErro: {e}.')
+            self.aviso.show()
+
+    def buscando_cadastro(self, campo):
+        try:
+            if campo == 'att':
+                busca = self.ui.att_a_produto_campo.text()
+            elif campo == 'rem':
+                busca = self.ui.rem_a_produto_campo.text()
+
+            try:
+                comparativo = PeeweeProduto.get(PeeweeProduto.nome == busca)
+            except:
+                print('não é nome')
+                try:
+                    comparativo = PeeweeProduto.get(PeeweeProduto.id == busca)
+                except:
+                    print('nao é id')
+
+            self.ui.att_c_nome_campo.setText(f'{comparativo.nome}')
+            self.ui.att_d_id_campo.setText(f'{comparativo.id}')
+            self.ui.att_e_tipo_lista.setIndex(f'{comparativo.tipo}')
+            self.ui.att_f_preco_campo.setText(f'{comparativo.preco}')
+        except:
+            self.aviso.ui.label_2.setText('Cadastro não encontrado.')
+            self.aviso.show()
+
+    def atualizando_cadastro(self):
+        try:
+            comparativo = PeeweeProduto.get(PeeweeProduto.nome == self.ui.att_a_produto_campo.text())
+
+            comparativo.nome = self.ui.att_c_nome_campo.text()
+            comparativo.tipo = self.ui.att_e_tipo_lista.currentIndex()
+            comparativo.preco = self.ui.att_f_preco_campo.text()
+
+            print(
+                comparativo.nome,
+                comparativo.tipo,
+                comparativo.preco,
+            )
+
+            comparativo.save()
+            self.aviso.ui.label_2.setText('Item Atualizado com Sucesso!')
+            self.aviso.show()
+
+        except Exception as erro:
+            self.aviso.ui.label_2.setText(f'Não foi possivel atualizar.\nErro: {erro}.')
+            self.aviso.show()
+
+        finally:
+            self.zerando_campos
+
+    def excluindo_cadastro(self, etapa):
+        comparativo = PeeweeProduto.get(PeeweeProduto.nome == self.ui.rem_a_produto_campo.text())
+
+        if etapa == 1:
+            try:
+                self.aviso.ui.label_2.setText(f'Item {comparativo.nome} foi escolhido')
+                self.aviso.show()
+                self.ui.rem_c_remover_botao.setEnabled(True)
+            except:
+                self.aviso.ui.label_2.setText('Item não encontrado.')
+                self.aviso.show()
+                self.ui.rem_c_remover_botao.setEnabled(False)
+
+        elif etapa == 2:
+            try:
+                nome = comparativo.nome
+                if not self.ui.rem_b_ciente_checkbox.isChecked():
+                    raise Exception
+                comparativo.delete_instance()
+
+                self.aviso.ui.label_2.setText(f'Item {nome} excluido com sucesso.')
+                self.aviso.show()
+                self.zerando_campos()
+                self.ui.rem_b_ciente_checkbox.setChecked(False)
+                self.ui.rem_c_remover_botao.setEnabled(False)
+
+            except:
+                self.aviso.ui.label_2.setText('Cheque a caixa de ciente para confirmar a exclusão.')
+                self.aviso.show()
+
 
 
 class JanelaAviso(QMainWindow):
