@@ -1,10 +1,10 @@
-from logging import exception
 import sys
 from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import Signal
 from dependencias.janelas import *
 from dependencias.models_peewee import *
 from dependencias.erros import *
+from side.janelas.ui_janela_aviso import Ui_MainWindow
 
 class WidgetLogin(QMainWindow):
     def __init__(self):
@@ -234,10 +234,12 @@ class WidgetCadastroCliente(QWidget):
         self.ui.setupUi(self)
 
         self.cliente = PeeweeCliente()
+        self.aviso = JanelaAviso()
 
         # - Comportamento:
         # -- zerando os campos dos formularios:
         self.zerando_cliente()
+        self.ui.rem_c_remover_botao.setEnabled(False)
         
         # -- iniciando escondido:
         self.hide()
@@ -251,6 +253,10 @@ class WidgetCadastroCliente(QWidget):
         self.ui.att_a_cliente_botao.clicked.connect(lambda: self.buscando_cadastro('att'))
         self.ui.att_h_atualizar_botao.clicked.connect(self.atualizando_cadastro)
         
+        # -- disparando função de remover cadastro:
+        self.ui.rem_a_cliente_botao.clicked.connect(lambda: self.excluindo_cadastro(1))
+        self.ui.rem_c_remover_botao.clicked.connect(lambda: self.excluindo_cadastro(2))
+
 
     def zerando_cliente(self):
         itens = [
@@ -290,29 +296,138 @@ class WidgetCadastroCliente(QWidget):
             print(e)
 
     def buscando_cadastro(self, campo):
-        if campo == 'att':
-            busca = self.ui.att_a_cliente_campo.text()
-        elif campo == 'rem':
-            busca = self.ui.rem_a_cliente_botao.text()
-
         try:
-            comparativo = PeeweeCliente.get(PeeweeCliente.nome == busca)
-        except:
-            print('não é nome')
-            try:
-                comparativo = PeeweeCliente.get(PeeweeCliente.identidade == busca)
-            except:
-                print('nao é id')
+            if campo == 'att':
+                busca = self.ui.att_a_cliente_campo.text()
+            elif campo == 'rem':
+                busca = self.ui.rem_a_cliente_botao.text()
 
-        self.ui.att_c_nome_campo.setText(f'{comparativo.nome}')
-        self.ui.att_d_id_campo.setText(f'{comparativo.identidade}')
-        self.ui.att_e_end_campo.setText(f'{comparativo.endereco}')
-        self.ui.att_f_tel_1_campo.setText(f'{comparativo.tel_1}')
-        self.ui.att_g_tel_2_campo.setText(f'{comparativo.tel_2}')
+            try:
+                comparativo = PeeweeCliente.get(PeeweeCliente.nome == busca)
+            except:
+                print('não é nome')
+                try:
+                    comparativo = PeeweeCliente.get(PeeweeCliente.identidade == busca)
+                except:
+                    print('nao é id')
+
+            self.ui.att_c_nome_campo.setText(f'{comparativo.nome}')
+            self.ui.att_d_id_campo.setText(f'{comparativo.identidade}')
+            self.ui.att_e_end_campo.setText(f'{comparativo.endereco}')
+            self.ui.att_f_tel_1_campo.setText(f'{comparativo.tel_1}')
+            self.ui.att_g_tel_2_campo.setText(f'{comparativo.tel_2}')
+        except:
+            self.aviso.ui.label_2.setText('Cadastro não encontrado.')
+            self.aviso.show()
 
     def atualizando_cadastro(self):
-        pass
+        try:
+            comparativo = PeeweeCliente.get(PeeweeCliente.nome == self.ui.att_a_cliente_campo.text())
 
+            comparativo.nome = self.ui.att_c_nome_campo.text()
+            comparativo.identidade = int(self.ui.att_d_id_campo.text())
+            comparativo.endereco = self.ui.att_e_end_campo.text()
+            comparativo.tel_1 = self.ui.att_f_tel_1_campo.text()
+            comparativo.tel_2 = self.ui.att_g_tel_2_campo.text()
+
+            print(
+                comparativo.nome,
+                comparativo.identidade,
+                comparativo.endereco,
+                comparativo.tel_1,
+                comparativo.tel_2,
+            )
+
+            comparativo.save()
+            self.aviso.ui.label_2.setText('Cadastro Atualizado com Sucesso!')
+            self.aviso.show()
+
+        except Exception as erro:
+            self.aviso.ui.label_2.setText(f'Não foi possivel atualizar.\nErro: {erro}.')
+            self.aviso.show()
+
+        finally:
+            lista_de_checagem = [
+                self.ui.att_a_cliente_campo.text(),
+                self.ui.att_c_nome_campo.text(),
+                self.ui.att_d_id_campo.text(),
+                self.ui.att_e_end_campo.text(),
+                self.ui.att_f_tel_1_campo.text(),
+                self.ui.att_g_tel_2_campo.text()
+            ]
+
+    def excluindo_cadastro(self, etapa):
+        comparativo = PeeweeCliente.get(PeeweeCliente.nome == self.ui.rem_a_cliente_campo.text())
+
+        if etapa == 1:
+            try:
+                self.aviso.ui.label_2.setText(f'Cliente {comparativo.nome} foi escolhido')
+                self.aviso.show()
+                self.ui.rem_c_remover_botao.setEnabled(True)
+            except:
+                self.aviso.ui.label_2.setText('Cadastro não encontrado.')
+                self.aviso.show()
+                self.ui.rem_c_remover_botao.setEnabled(False)
+
+        elif etapa == 2:
+            try:
+                nome = comparativo.nome
+                if not self.ui.rem_b_ciente_checkbox.isChecked():
+                    raise Exception
+                comparativo.delete_instance()
+
+                self.aviso.ui.label_2.setText(f'Cadastro {nome} excluido com sucesso.')
+                self.aviso.show()
+                self.ui.rem_a_cliente_campo.setText('')
+                self.ui.rem_b_ciente_checkbox.setChecked(False)
+                self.ui.rem_c_remover_botao.setEnabled(False)
+
+            except Exception as erro:
+                self.aviso.ui.label_2.setText('Cheque a caixa de ciente para confirmar a exclusão.')
+                self.aviso.show()
+
+
+class JanelaAviso(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+        # - Comportamento
+        # -- retirada do frame padrão do Windows.
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+        # -- adicionar sombra à janela principal.
+        self.sombra = QGraphicsDropShadowEffect(self)
+        self.sombra.setBlurRadius(50)
+        self.sombra.setXOffset(0)
+        self.sombra.setYOffset(0)
+        self.sombra.setColor(QColor(0,92,157,550))
+        self.ui.centralwidget.setGraphicsEffect(self.sombra)
+
+        # -- adicionar icone e titulo à pagina.
+        self.setWindowIcon(QtGui.QIcon(':/icons/icones/basket.svg'))
+        self.setWindowTitle('Aviso')
+
+        # - Eventos
+        # -- função de arrastar a janela ao clicar no titulo.
+        self.ui.frame_8.mouseMoveEvent = self.movendo_janela
+
+        # -- gatilho para transitar para o main
+        self.ui.pushButton.clicked.connect(self.hide)
+        self.hide()
+    
+
+    def movendo_janela(self, mouse): # função prioridade global
+        if not self.isMaximized():
+            if mouse.buttons() == Qt.LeftButton:
+                self.move(self.pos() + mouse.globalPos() - self.posicao_mouse)
+                self.posicao_mouse = mouse.globalPos()
+                mouse.accept()
+    
+    def mousePressEvent(self, event): # função prioridade global
+        self.posicao_mouse = event.globalPos()
 
 
 app = QApplication(sys.argv)

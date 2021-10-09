@@ -6,7 +6,12 @@ from dependencias.models_peewee import *
 
 #read um registro
 cliente = PeeweeCliente.get(PeeweeCliente.nome == "Hermione Granger")
-print([cliente.nome, cliente.identidade]) 
+print([cliente.nome, cliente.identidade])
+print(cliente.tel_1)
+cliente.tel_1 = 279555443311
+cliente.save()
+cliente = PeeweeCliente.get(PeeweeCliente.nome == "Hermione Granger")
+print(cliente.tel_1)
 
 #update
 #login.author = "esmeril"
