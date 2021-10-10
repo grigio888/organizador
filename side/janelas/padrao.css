@@ -18,6 +18,42 @@ QComboBox::down-arrow {
     image: url(:/icons/icones/chevron-down.svg);
     height: 20px
 }
+QComboBox::up-arrow {
+    image: url(:/icons/icones/chevron-up.svg);
+    height: 20px
+}
+
+
+
+QCheckBox::indicator {
+    background-color: none;
+    border: 1px solid rgb(0,0,0);
+    border-radius: 2px;
+}
+QCheckBox::indicator:checked {
+    image: url(:/icons/icones/checkmark.svg);
+    height: 11px;
+}
+QCheckBox::indicator:checked:hover {
+    background-color: transparent;
+}
+QCheckBox::indicator:checked:pressed {
+    background-color: transparent;
+}
+QCheckBox::indicator:unchecked:hover {
+    background-color: transparent;
+}
+QCheckBox::indicator:unchecked:pressed {
+    background-color: transparent;
+}
+QCheckBox::indicator:checked:disabled {
+    background-color: rgb(100,100,100);
+}
+QCheckBox::indicator:unchecked:disabled {
+    background-color: rgb(100,100,100);
+}
+
+
 
 QLineEdit {
     background-color: rgb(250,250,250);
@@ -27,6 +63,44 @@ QLineEdit {
     border-radius: 3px;
     font: 8pt "Century Gothic";
 }
+
+
+
+QLabel {
+    font: 8pt "Century Gothic";
+}
+
+
+
+Line {
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+}
+
+
+
+QTextBrowser {
+    background-color: rgb(250,250,250);
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+    font: 8pt "Century Gothic";
+}
+
+
+
+QTextEdit {
+    background-color: rgb(250,250,250);
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(200,200,200);
+    border-radius: 3px;
+    font: 8pt "Century Gothic";
+}
+
+
 
 QPushButton {
     background-color: rgb(250,250,250);
@@ -41,20 +115,138 @@ QPushButton::pressed {
     border-style: inset
 }
 
-QTextBrowser {
-    background-color: rgb(250,250,250);
-    border-style: outset;
-    border-width: 1px;
-    border-color: rgb(200,200,200);
-    border-radius: 3px;
-    font: 8pt "Century Gothic";
+
+QScrollBar:horizontal {
+    background-color: #2A2929;
+    width: 9px;
+    margin: 2px 2px 3px 2px;
+    border: 1px transparent #2A2929;
+    border-radius: 7px;
+}
+QScrollBar::handle:horizontal {
+    background-color: rgb(185,205,205);
+    min-height: 5px;
+    border-radius: 2px;
+}
+QScrollBar::sub-line:horizontal {
+    margin: 0px;
+    height: 1px;
+    width: 1px;
+}
+QScrollBar::add-line:horizontal {
+    margin: 0px;
+    height: 1px;
+    width: 1px;
+}
+QScrollBar::sub-line:horizontal:hover,
+QScrollBar::sub-line:horizontal:on {
+    height: 1px;
+    width: 1px;
+}
+QScrollBar::add-line:horizontal:hover,
+QScrollBar::add-line:horizontal:on {
+    height: 1px;
+    width: 1px;
+}
+QScrollBar::up-arrow:horizontal,
+QScrollBar::down-arrow:horizontal {
+    background: none;
+}
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+}
+QScrollBar:vertical {
+    background-color: #2A2929;
+    width: 9px;
+    margin: 2px 2px 2px 3px;
+    border: 1px transparent #2A2929;
+    border-radius: 7px;
+}
+QScrollBar::handle:vertical {
+    background-color: rgb(185,205,205);         /* #605F5F; */
+    min-height: 5px;
+    border-radius: 2px;
+}
+QScrollBar::sub-line:vertical {
+    margin: 0px;
+    height: 1px;
+    width: 1px;
+}
+QScrollBar::add-line:vertical {
+    margin: 0px;
+    height: 1px;
+    width: 1px;
+}
+QScrollBar::sub-line:vertical:hover,
+QScrollBar::sub-line:vertical:on {
+    height: 1px;
+    width: 1px;
+}
+QScrollBar::add-line:vertical:hover,
+QScrollBar::add-line:vertical:on {
+    height: 1px;
+    width: 1px;
+}
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+    background: none;
+}
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
 }
 
-QTextEdit {
-    background-color: rgb(250,250,250);
-    border-style: outset;
-    border-width: 1px;
-    border-color: rgb(200,200,200);
+
+
+QTabWidget::pane {
+    border: 1px solid rgb(200,200,200);
+    border-top: none;
     border-radius: 3px;
-    font: 8pt "Century Gothic";
+    border-top-left-radius: 0px;
+    background: rgb(245, 245, 245); 
+    font: 8px "Century Gothic";
+} 
+
+QTabBar::tab {
+    background: rgb(230,230,230); 
+    border: 1px solid rgb(200,200,200);
+    border-radius: 3px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 4px;
+} 
+
+QTabBar::tab:selected { 
+    background: white; 
+    margin-bottom: -1px; 
+}
+
+
+
+QPushButton#a_minimizar,
+QPushButton#b_maximizar,
+QPushButton#c_fechar,
+QPushButton#a_botao_home,
+QPushButton#b_botao_pedido,
+QPushButton#c_botao_cliente,
+QPushButton#d_botao_item,
+QPushButton#e_botao_relatorio,
+QPushButton#a_botao_opcao,
+QPushButton#b_botao_logout {
+    background-color: none;
+    border: none;
+}
+QPushButton#a_minimizar::pressed,
+QPushButton#b_maximizar::pressed,
+QPushButton#c_fechar::pressed,
+QPushButton#a_botao_home::pressed,
+QPushButton#b_botao_pedido::pressed,
+QPushButton#c_botao_cliente::pressed,
+QPushButton#d_botao_item::pressed,
+QPushButton#e_botao_relatorio::pressed,
+QPushButton#a_botao_opcao::pressed,
+QPushButton#b_botao_logout::pressed {
+    background-color: none;
+    border: none;
 }

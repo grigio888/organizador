@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'janela_avisoPPByve.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
     QRect, QSize, QUrl, Qt)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
@@ -19,7 +9,7 @@ import os, sys
 sys.path.insert(0, './')
 import side.icons_rc
 
-from side.janelas.padrao import *
+stylesheet = open('side/janelas/padrao.css', 'r').read()
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -27,6 +17,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(188, 184)
         MainWindow.setMaximumSize(QSize(16777215, 16777215))
+        MainWindow.setStyleSheet(stylesheet)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -127,11 +118,10 @@ class Ui_MainWindow(object):
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_6)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.pushButton = QPushButton(self.frame_6)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setStyleSheet(estilo_push_button())
+        self.botao_voltar = QPushButton(self.frame_6)
+        self.botao_voltar.setObjectName(u"botao_voltar")
 
-        self.horizontalLayout_4.addWidget(self.pushButton)
+        self.horizontalLayout_4.addWidget(self.botao_voltar)
 
 
         self.verticalLayout_2.addWidget(self.frame_6, 0, Qt.AlignBottom)
@@ -153,6 +143,54 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Aviso", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Texto a ser exibido. Demonstrando que uma frase grande pode sofrer quebra de linha automatica quando atinge o final da label.", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
+        self.botao_voltar.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
     # retranslateUi
 
+if __name__ == '__main__':
+
+    class Tela(QMainWindow):
+        def __init__(self):
+            super().__init__()
+            self.ui = Ui_MainWindow()
+            self.ui.setupUi(self)
+
+            # - Comportamento
+            # -- retirada do frame padrão do Windows.
+            self.setWindowFlag(Qt.FramelessWindowHint)
+            self.setAttribute(Qt.WA_TranslucentBackground)
+
+            # -- adicionar sombra à janela principal.
+            self.sombra = QGraphicsDropShadowEffect(self)
+            self.sombra.setBlurRadius(50)
+            self.sombra.setXOffset(0)
+            self.sombra.setYOffset(0)
+            self.sombra.setColor(QColor(0,92,157,550))
+            self.ui.centralwidget.setGraphicsEffect(self.sombra)
+
+            # -- adicionar icone e titulo à pagina.
+            self.setWindowIcon(QIcon(':/icons/icones/basket.svg'))
+            self.setWindowTitle('Organizador')
+
+
+            # - Eventos
+            # -- função de arrastar a janela ao clicar no titulo.
+            self.ui.frame_3.mouseMoveEvent = self.movendo_janela
+            
+            # -- função basica de controle da janela.
+            self.ui.botao_voltar.clicked.connect(self.close)
+        
+
+        def movendo_janela(self, mouse): # função prioridade global
+            if not self.isMaximized():
+                if mouse.buttons() == Qt.LeftButton:
+                    self.move(self.pos() + mouse.globalPos() - self.posicao_mouse)
+                    self.posicao_mouse = mouse.globalPos()
+                    mouse.accept()
+        
+        def mousePressEvent(self, event): # função prioridade global
+            self.posicao_mouse = event.globalPos()
+
+    app = QApplication(sys.argv)
+    janela = Tela()
+    janela.show()
+    sys.exit(app.exec_())

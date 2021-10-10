@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'widget_1_landingpagewsbNAG.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
     QRect, QSize, QUrl, Qt)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
@@ -15,12 +5,14 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QRadialGradient)
 from PySide2.QtWidgets import *
 
+stylesheet = open('side/janelas/padrao.css', 'r').read()
 
 class Ui_LandingPage(object):
     def setupUi(self, LandingPage):
         if LandingPage.objectName():
             LandingPage.setObjectName(u"LandingPage")
         LandingPage.resize(400, 300)
+        LandingPage.setStyleSheet(stylesheet)
         self.verticalLayout = QVBoxLayout(LandingPage)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -39,9 +31,6 @@ class Ui_LandingPage(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.imagem = QLabel(self.frame_2)
         self.imagem.setObjectName(u"imagem")
-        font = QFont()
-        font.setFamily(u"Century Gothic")
-        self.imagem.setFont(font)
         self.imagem.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_3.addWidget(self.imagem)
@@ -73,7 +62,6 @@ class Ui_LandingPage(object):
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.imagem_2 = QLabel(self.frame_4)
         self.imagem_2.setObjectName(u"imagem_2")
-        self.imagem_2.setFont(font)
         self.imagem_2.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.imagem_2)
@@ -97,3 +85,16 @@ class Ui_LandingPage(object):
         self.imagem_2.setText("")
     # retranslateUi
 
+if __name__ == '__main__':
+    import sys
+
+    class Tela(QMainWindow):
+        def __init__(self):
+            super().__init__()
+            self.ui = Ui_LandingPage()
+            self.ui.setupUi(self)
+
+    app = QApplication(sys.argv)
+    janela = Tela()
+    janela.show()
+    sys.exit(app.exec_())

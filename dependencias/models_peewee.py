@@ -1,7 +1,13 @@
 import peewee
+import datetime
+import random
+import string
 
 db = peewee.SqliteDatabase('dependencias/database.db')
 
+def token_creator(length):
+    result_str = ''.join(random.choice(string.ascii_letters)for i in range(length))
+    return result_str
 
 #tabelas login, cliente, pedido, produtos, produtos_do_pedido
 
@@ -55,6 +61,7 @@ class PeeweePedido(BaseModel):
     cliente = peewee.ForeignKeyField(PeeweeCliente)
     produto = peewee.ForeignKeyField(PeeweeProduto)
     quantidade = peewee.IntegerField()
+    observacao = peewee.TextField()
     #codigo do pedido com todos os itens cadastrados vinculados a sessão e FOR
     codigo = peewee.TextField()
 

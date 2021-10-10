@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'widget_4_cadastro_itemxnTJiJ.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
     QRect, QSize, QUrl, Qt)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
@@ -19,17 +9,13 @@ import os, sys
 sys.path.insert(0, './')
 import side.icons_rc
 
-stylesheet = open('side/janelas/padrao.css', 'r')
-stylesheet = stylesheet.read()
+stylesheet = open('side/janelas/padrao.css', 'r').read()
 
 class Ui_cadastro_item(object):
     def setupUi(self, cadastro_item):
         if cadastro_item.objectName():
             cadastro_item.setObjectName(u"cadastro_item")
         cadastro_item.resize(358, 358)
-        font = QFont()
-        font.setFamily(u"Century Gothic")
-        cadastro_item.setFont(font)
         cadastro_item.setStyleSheet(stylesheet)
         self.verticalLayout = QVBoxLayout(cadastro_item)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -82,13 +68,6 @@ class Ui_cadastro_item(object):
         self.add_a_produto_campo = QLineEdit(self.add_a_nome)
         self.add_a_produto_campo.setObjectName(u"add_a_produto_campo")
         self.add_a_produto_campo.setMinimumSize(QSize(0, 20))
-        self.add_a_produto_campo.setStyleSheet(u"QLineEdit {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
 
         self.horizontalLayout_10.addWidget(self.add_a_produto_campo)
 
@@ -145,13 +124,9 @@ class Ui_cadastro_item(object):
         self.add_d_preco_campo = QLineEdit(self.add_d_tel_1)
         self.add_d_preco_campo.setObjectName(u"add_d_preco_campo")
         self.add_d_preco_campo.setMinimumSize(QSize(0, 20))
-        self.add_d_preco_campo.setStyleSheet(u"QLineEdit {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
+        self.add_d_preco_campo.setInputMethodHints(Qt.ImhExclusiveInputMask)
+        self.add_d_preco_campo.setMaxLength(7)
+
 
         self.horizontalLayout_13.addWidget(self.add_d_preco_campo)
 
@@ -167,20 +142,6 @@ class Ui_cadastro_item(object):
         self.add_f_cadastrar_botao = QPushButton(self.add_f_cadastrar)
         self.add_f_cadastrar_botao.setObjectName(u"add_f_cadastrar_botao")
         self.add_f_cadastrar_botao.setMinimumSize(QSize(0, 25))
-        self.add_f_cadastrar_botao.setFont(font)
-        self.add_f_cadastrar_botao.setStyleSheet(u"QPushButton {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}\n"
-"\n"
-"")
         icon = QIcon()
         icon.addFile(u":/icons/icones/checkmark.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.add_f_cadastrar_botao.setIcon(icon)
@@ -212,32 +173,12 @@ class Ui_cadastro_item(object):
         self.att_a_produto_campo = QLineEdit(self.att_a_cliente)
         self.att_a_produto_campo.setObjectName(u"att_a_produto_campo")
         self.att_a_produto_campo.setMinimumSize(QSize(0, 20))
-        self.att_a_produto_campo.setStyleSheet(u"QLineEdit {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
 
         self.horizontalLayout_26.addWidget(self.att_a_produto_campo)
 
         self.att_a_produto_botao = QPushButton(self.att_a_cliente)
         self.att_a_produto_botao.setObjectName(u"att_a_produto_botao")
         self.att_a_produto_botao.setMinimumSize(QSize(70, 20))
-        self.att_a_produto_botao.setStyleSheet(u"QPushButton {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}\n"
-"\n"
-"")
         icon1 = QIcon()
         icon1.addFile(u":/icons/icones/search.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.att_a_produto_botao.setIcon(icon1)
@@ -277,13 +218,6 @@ class Ui_cadastro_item(object):
         self.att_c_nome_campo = QLineEdit(self.att_c_nome)
         self.att_c_nome_campo.setObjectName(u"att_c_nome_campo")
         self.att_c_nome_campo.setMinimumSize(QSize(0, 20))
-        self.att_c_nome_campo.setStyleSheet(u"QLineEdit {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
 
         self.horizontalLayout_24.addWidget(self.att_c_nome_campo)
 
@@ -360,13 +294,8 @@ class Ui_cadastro_item(object):
         self.att_f_preco_campo = QLineEdit(self.att_f_tel_1)
         self.att_f_preco_campo.setObjectName(u"att_f_preco_campo")
         self.att_f_preco_campo.setMinimumSize(QSize(0, 20))
-        self.att_f_preco_campo.setStyleSheet(u"QLineEdit {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
+        self.att_f_preco_campo.setInputMethodHints(Qt.ImhExclusiveInputMask)
+        self.att_f_preco_campo.setMaxLength(7)
 
         self.horizontalLayout_23.addWidget(self.att_f_preco_campo)
 
@@ -383,19 +312,6 @@ class Ui_cadastro_item(object):
         self.att_h_atualizar_botao = QPushButton(self.att_h_atualizar)
         self.att_h_atualizar_botao.setObjectName(u"att_h_atualizar_botao")
         self.att_h_atualizar_botao.setMinimumSize(QSize(0, 25))
-        self.att_h_atualizar_botao.setStyleSheet(u"QPushButton {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}\n"
-"\n"
-"")
         icon2 = QIcon()
         icon2.addFile(u":/icons/icones/retweet.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.att_h_atualizar_botao.setIcon(icon2)
@@ -426,32 +342,12 @@ class Ui_cadastro_item(object):
         self.rem_a_produto_campo = QLineEdit(self.rem_a_cliente)
         self.rem_a_produto_campo.setObjectName(u"rem_a_produto_campo")
         self.rem_a_produto_campo.setMinimumSize(QSize(0, 20))
-        self.rem_a_produto_campo.setStyleSheet(u"QLineEdit {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
 
         self.horizontalLayout_31.addWidget(self.rem_a_produto_campo)
 
         self.rem_a_produto_botao = QPushButton(self.rem_a_cliente)
         self.rem_a_produto_botao.setObjectName(u"rem_a_produto_botao")
         self.rem_a_produto_botao.setMinimumSize(QSize(70, 20))
-        self.rem_a_produto_botao.setStyleSheet(u"QPushButton {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}\n"
-"\n"
-"")
         self.rem_a_produto_botao.setIcon(icon1)
         self.rem_a_produto_botao.setIconSize(QSize(11, 16))
 
@@ -472,8 +368,6 @@ class Ui_cadastro_item(object):
         self.rem_b_ciente_checkbox = QCheckBox(self.rem_b_ciente)
         self.rem_b_ciente_checkbox.setObjectName(u"rem_b_ciente_checkbox")
         self.rem_b_ciente_checkbox.setMinimumSize(QSize(0, 20))
-        self.rem_b_ciente_checkbox.setFont(font)
-        self.rem_b_ciente_checkbox.setStyleSheet(u"")
 
         self.horizontalLayout_30.addWidget(self.rem_b_ciente_checkbox)
 
@@ -490,19 +384,6 @@ class Ui_cadastro_item(object):
         self.rem_c_remover_botao = QPushButton(self.rem_c_remover)
         self.rem_c_remover_botao.setObjectName(u"rem_c_remover_botao")
         self.rem_c_remover_botao.setMinimumSize(QSize(0, 25))
-        self.rem_c_remover_botao.setStyleSheet(u"QPushButton {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}\n"
-"\n"
-"")
         icon3 = QIcon()
         icon3.addFile(u":/icons/icones/tag-delete.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.rem_c_remover_botao.setIcon(icon3)
@@ -522,7 +403,7 @@ class Ui_cadastro_item(object):
 
         self.retranslateUi(cadastro_item)
 
-        self.guia.setCurrentIndex(2)
+        self.guia.setCurrentIndex(0)
         self.add_b_tipo_lista.setCurrentIndex(-1)
 
 
@@ -536,7 +417,8 @@ class Ui_cadastro_item(object):
         self.add_a_produto_campo.setPlaceholderText(QCoreApplication.translate("cadastro_item", u"Nome do Item.", None))
         self.add_b_tipo_label.setText(QCoreApplication.translate("cadastro_item", u"Tipo:", None))
         self.add_d_preco_label.setText(QCoreApplication.translate("cadastro_item", u"Pre\u00e7o:", None))
-        self.add_d_preco_campo.setPlaceholderText(QCoreApplication.translate("cadastro_item", u"R$ 000,00", None))
+        self.add_d_preco_campo.setInputMask(QCoreApplication.translate("cadastro_item", u"0000,00", None))
+        self.add_d_preco_campo.setPlaceholderText(QCoreApplication.translate("cadastro_item", u"R$ 0000,00", None))
         self.add_f_cadastrar_botao.setText(QCoreApplication.translate("cadastro_item", u"Cadastrar", None))
         self.guia.setTabText(self.guia.indexOf(self.guia_adicionar), QCoreApplication.translate("cadastro_item", u"Adicionar", None))
         self.att_a_produto_label.setText(QCoreApplication.translate("cadastro_item", u"Produto / ID:", None))
@@ -547,7 +429,8 @@ class Ui_cadastro_item(object):
         self.att_d_id_label.setText(QCoreApplication.translate("cadastro_item", u"ID:", None))
         self.att_e_tipo_label.setText(QCoreApplication.translate("cadastro_item", u"Tipo:", None))
         self.att_f_preco_label.setText(QCoreApplication.translate("cadastro_item", u"Pre\u00e7o:", None))
-        self.att_f_preco_campo.setPlaceholderText(QCoreApplication.translate("cadastro_item", u"R$ 000,00", None))
+        self.att_f_preco_campo.setInputMask(QCoreApplication.translate("cadastro_item", u"0000,00", None))
+        self.att_f_preco_campo.setPlaceholderText(QCoreApplication.translate("cadastro_item", u"R$ 0000,00", None))
         self.att_h_atualizar_botao.setText(QCoreApplication.translate("cadastro_item", u"Atualizar", None))
         self.guia.setTabText(self.guia.indexOf(self.guia_atualizar), QCoreApplication.translate("cadastro_item", u"Atualizar", None))
         self.rem_a_produto_label.setText(QCoreApplication.translate("cadastro_item", u"Produto / ID:", None))

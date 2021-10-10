@@ -19,7 +19,7 @@ import os, sys
 sys.path.insert(0, './')
 import side.icons_rc
 
-from side.janelas.padrao import *
+stylesheet = open('side/janelas/padrao.css', 'r').read()
 
 class Ui_Login(object):
     def setupUi(self, Login):
@@ -28,6 +28,7 @@ class Ui_Login(object):
         Login.resize(290, 190)
         Login.setMinimumSize(QSize(290, 190))
         Login.setMaximumSize(QSize(290, 190))
+        Login.setStyleSheet(stylesheet)
         self.centralwidget = QWidget(Login)
         self.centralwidget.setObjectName(u"centralwidget")
         self.fundo = QLabel(self.centralwidget)
@@ -48,42 +49,17 @@ class Ui_Login(object):
         font1 = QFont()
         font1.setFamily(u"Century Gothic")
         self.login_campo.setFont(font1)
-        self.login_campo.setStyleSheet(u"QLineEdit {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
         self.login_campo.setAlignment(Qt.AlignCenter)
         self.senha_campo = QLineEdit(self.centralwidget)
         self.senha_campo.setObjectName(u"senha_campo")
         self.senha_campo.setGeometry(QRect(60, 110, 171, 20))
         self.senha_campo.setFont(font1)
-        self.senha_campo.setStyleSheet(u"QLineEdit {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}")
         self.senha_campo.setEchoMode(QLineEdit.Password)
         self.senha_campo.setAlignment(Qt.AlignCenter)
         self.login_botao = QPushButton(self.centralwidget)
         self.login_botao.setObjectName(u"login_botao")
         self.login_botao.setGeometry(QRect(110, 150, 71, 23))
         self.login_botao.setFont(font1)
-        self.login_botao.setStyleSheet(u"QPushButton {\n"
-"    background-color: rgb(250,250,250);\n"
-"	border-style: outset;\n"
-"    border-width: 1px;\n"
-"    border-color: rgb(200,200,200);\n"
-"    border-radius: 3px;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(220, 220, 220);\n"
-"    border-style: inset;\n"
-"}")
         self.c_fechar = QPushButton(self.centralwidget)
         self.c_fechar.setObjectName(u"c_fechar")
         self.c_fechar.setGeometry(QRect(260, 13, 20, 16))
@@ -113,3 +89,54 @@ class Ui_Login(object):
         self.c_fechar.setText("")
     # retranslateUi
 
+if __name__ == '__main__':
+
+    class Tela(QMainWindow):
+        def __init__(self):
+            super().__init__()
+            self.ui = Ui_Login()
+            self.ui.setupUi(self)
+
+            # - Comportamento
+            # -- retirada do frame padrão do Windows.
+            self.setWindowFlag(Qt.FramelessWindowHint)
+            self.setAttribute(Qt.WA_TranslucentBackground)
+
+            # -- adicionar sombra à janela principal.
+            self.sombra = QGraphicsDropShadowEffect(self)
+            self.sombra.setBlurRadius(50)
+            self.sombra.setXOffset(0)
+            self.sombra.setYOffset(0)
+            self.sombra.setColor(QColor(0,92,157,550))
+            self.ui.centralwidget.setGraphicsEffect(self.sombra)
+
+            # -- adicionar icone e titulo à pagina.
+            self.setWindowIcon(QIcon(':/icons/icones/basket.svg'))
+            self.setWindowTitle('Organizador')
+
+
+            # - Eventos
+            # -- função de arrastar a janela ao clicar no titulo.
+            self.ui.para_arrastar.mouseMoveEvent = self.movendo_janela
+            
+            # -- função basica de controle da janela.
+            self.ui.c_fechar.clicked.connect(self.close)
+
+            # -- gatilho para transitar para o main
+            self.ui.login_botao.clicked.connect(lambda: print('login'))
+        
+
+        def movendo_janela(self, mouse): # função prioridade global
+            if not self.isMaximized():
+                if mouse.buttons() == Qt.LeftButton:
+                    self.move(self.pos() + mouse.globalPos() - self.posicao_mouse)
+                    self.posicao_mouse = mouse.globalPos()
+                    mouse.accept()
+        
+        def mousePressEvent(self, event): # função prioridade global
+            self.posicao_mouse = event.globalPos()
+
+    app = QApplication(sys.argv)
+    janela = Tela()
+    janela.show()
+    sys.exit(app.exec_())

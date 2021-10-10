@@ -24,11 +24,8 @@ produto_3 =  PeeweeProduto.create(nome="Pintura por metro quadrado",tipo=1,preco
 #tabela pedidos
 
 #codigo de token aleatorio criado por sessão de abertura de orcamento
-def get_random_string(length):
-    result_str = ''.join(random.choice(string.ascii_letters)for i in range(length))
-    return result_str
 
-cod = get_random_string(15)
+cod = token_creator(15)
 
 pedido_1 = PeeweePedido.create(criado_por=login_2.login,criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"), modo=1, cliente=cliente_1.identidade, produto=produto_1.id, quantidade=1, codigo=cod)
 pedido_2 = PeeweePedido.create(criado_por=login_2.login,criado_em=datetime.datetime.now().strftime("%Y-%m-%d-%H:%M"), modo=1, cliente=cliente_1.identidade, produto=produto_2.id, quantidade=2, codigo=cod)

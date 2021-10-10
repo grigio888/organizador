@@ -6,8 +6,12 @@ from dependencias.models_peewee import *
 
 #read um registro
 cliente = PeeweeCliente.get(PeeweeCliente.nome == "Hermione Granger")
-print([cliente.nome, cliente.identidade])
-print(cliente.id)
+#print([cliente.nome, cliente.identidade])
+#print(cliente.id)
+
+produto = PeeweeProduto.select()
+for t in produto:
+    print(t.nome)
 
 #update
 #login.author = "esmeril"

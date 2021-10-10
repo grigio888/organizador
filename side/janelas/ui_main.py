@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'untitledfXFLMF.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
     QRect, QSize, QUrl, Qt)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
@@ -19,12 +9,15 @@ import os, sys
 sys.path.insert(0, './')
 import side.icons_rc
 
+stylesheet = open('side/janelas/padrao.css', 'r').read()
+
 class Ui_Organizador(object):
     def setupUi(self, Organizador):
         if Organizador.objectName():
             Organizador.setObjectName(u"Organizador")
         Organizador.resize(630, 550)
         Organizador.setMinimumSize(QSize(630, 550))
+        Organizador.setStyleSheet(stylesheet)
         self.centralwidget = QWidget(Organizador)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setEnabled(True)
@@ -373,3 +366,51 @@ class Ui_Organizador(object):
         self.c_fechar.setText("")
     # retranslateUi
 
+if __name__ == '__main__':
+
+    class Tela(QMainWindow):
+        def __init__(self):
+            super().__init__()
+            self.ui = Ui_Organizador()
+            self.ui.setupUi(self)
+
+            # - Comportamento
+            # -- retirada do frame padrão do Windows.
+            self.setWindowFlag(Qt.FramelessWindowHint)
+            self.setAttribute(Qt.WA_TranslucentBackground)
+
+            # -- adicionar sombra à janela principal.
+            self.sombra = QGraphicsDropShadowEffect(self)
+            self.sombra.setBlurRadius(50)
+            self.sombra.setXOffset(0)
+            self.sombra.setYOffset(0)
+            self.sombra.setColor(QColor(0,92,157,550))
+            self.ui.centralwidget.setGraphicsEffect(self.sombra)
+
+            # -- adicionar icone e titulo à pagina.
+            self.setWindowIcon(QIcon(':/icons/icones/basket.svg'))
+            self.setWindowTitle('Organizador')
+
+
+            # - Eventos
+            # -- função de arrastar a janela ao clicar no titulo.
+            self.ui.a_nome.mouseMoveEvent = self.movendo_janela
+            
+            # -- função basica de controle da janela.
+            self.ui.c_fechar.clicked.connect(self.close)
+        
+
+        def movendo_janela(self, mouse): # função prioridade global
+            if not self.isMaximized():
+                if mouse.buttons() == Qt.LeftButton:
+                    self.move(self.pos() + mouse.globalPos() - self.posicao_mouse)
+                    self.posicao_mouse = mouse.globalPos()
+                    mouse.accept()
+        
+        def mousePressEvent(self, event): # função prioridade global
+            self.posicao_mouse = event.globalPos()
+
+    app = QApplication(sys.argv)
+    janela = Tela()
+    janela.show()
+    sys.exit(app.exec_())

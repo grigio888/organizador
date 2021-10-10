@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'widget_3_cadastro_clientenqBNBz.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
     QRect, QSize, QUrl, Qt)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
@@ -19,16 +9,14 @@ import os, sys
 sys.path.insert(0, './')
 import side.icons_rc
 
-from side.janelas.padrao import *
+stylesheet = open('side/janelas/padrao.css', 'r').read()
 
 class Ui_cadastro_cliente(object):
     def setupUi(self, cadastro_cliente):
         if cadastro_cliente.objectName():
             cadastro_cliente.setObjectName(u"cadastro_cliente")
         cadastro_cliente.resize(336, 358)
-        font = QFont()
-        font.setFamily(u"Century Gothic")
-        cadastro_cliente.setFont(font)
+        cadastro_cliente.setStyleSheet(stylesheet)
         self.verticalLayout = QVBoxLayout(cadastro_cliente)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -80,7 +68,6 @@ class Ui_cadastro_cliente(object):
         self.add_a_nome_campo = QLineEdit(self.add_a_nome)
         self.add_a_nome_campo.setObjectName(u"add_a_nome_campo")
         self.add_a_nome_campo.setMinimumSize(QSize(0, 20))
-        self.add_a_nome_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_10.addWidget(self.add_a_nome_campo)
 
@@ -104,7 +91,6 @@ class Ui_cadastro_cliente(object):
         self.add_b_id_campo = QLineEdit(self.add_b_id)
         self.add_b_id_campo.setObjectName(u"add_b_id_campo")
         self.add_b_id_campo.setMinimumSize(QSize(0, 20))
-        self.add_b_id_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_11.addWidget(self.add_b_id_campo)
 
@@ -131,7 +117,6 @@ class Ui_cadastro_cliente(object):
         self.add_c_end_campo = QLineEdit(self.add_c_end)
         self.add_c_end_campo.setObjectName(u"add_c_end_campo")
         self.add_c_end_campo.setMinimumSize(QSize(0, 20))
-        self.add_c_end_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_12.addWidget(self.add_c_end_campo)
 
@@ -158,7 +143,6 @@ class Ui_cadastro_cliente(object):
         self.add_d_tel_1_campo = QLineEdit(self.add_d_tel_1)
         self.add_d_tel_1_campo.setObjectName(u"add_d_tel_1_campo")
         self.add_d_tel_1_campo.setMinimumSize(QSize(0, 20))
-        self.add_d_tel_1_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_13.addWidget(self.add_d_tel_1_campo)
 
@@ -192,7 +176,6 @@ class Ui_cadastro_cliente(object):
         font1.setItalic(False)
         font1.setWeight(50)
         self.add_e_tel_2_campo.setFont(font1)
-        self.add_e_tel_2_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_14.addWidget(self.add_e_tel_2_campo)
 
@@ -208,8 +191,6 @@ class Ui_cadastro_cliente(object):
         self.add_f_cadastrar_botao = QPushButton(self.add_f_cadastrar)
         self.add_f_cadastrar_botao.setObjectName(u"add_f_cadastrar_botao")
         self.add_f_cadastrar_botao.setMinimumSize(QSize(0, 25))
-        self.add_f_cadastrar_botao.setFont(font)
-        self.add_f_cadastrar_botao.setStyleSheet(estilo_push_button())
         icon = QIcon()
         icon.addFile(u":/icons/icones/checkmark.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.add_f_cadastrar_botao.setIcon(icon)
@@ -241,14 +222,12 @@ class Ui_cadastro_cliente(object):
         self.att_a_cliente_campo = QLineEdit(self.att_a_cliente)
         self.att_a_cliente_campo.setObjectName(u"att_a_cliente_campo")
         self.att_a_cliente_campo.setMinimumSize(QSize(0, 20))
-        self.att_a_cliente_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_26.addWidget(self.att_a_cliente_campo)
 
         self.att_a_cliente_botao = QPushButton(self.att_a_cliente)
         self.att_a_cliente_botao.setObjectName(u"att_a_cliente_botao")
         self.att_a_cliente_botao.setMinimumSize(QSize(70, 20))
-        self.att_a_cliente_botao.setStyleSheet(estilo_push_button())
         icon1 = QIcon()
         icon1.addFile(u":/icons/icones/search.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.att_a_cliente_botao.setIcon(icon1)
@@ -288,7 +267,6 @@ class Ui_cadastro_cliente(object):
         self.att_c_nome_campo = QLineEdit(self.att_c_nome)
         self.att_c_nome_campo.setObjectName(u"att_c_nome_campo")
         self.att_c_nome_campo.setMinimumSize(QSize(0, 20))
-        self.att_c_nome_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_24.addWidget(self.att_c_nome_campo)
 
@@ -313,7 +291,6 @@ class Ui_cadastro_cliente(object):
         self.att_d_id_campo = QLineEdit(self.att_d_id)
         self.att_d_id_campo.setObjectName(u"att_d_id_campo")
         self.att_d_id_campo.setMinimumSize(QSize(0, 20))
-        self.att_d_id_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_25.addWidget(self.att_d_id_campo)
 
@@ -338,7 +315,6 @@ class Ui_cadastro_cliente(object):
         self.att_e_end_campo = QLineEdit(self.att_e_end)
         self.att_e_end_campo.setObjectName(u"att_e_end_campo")
         self.att_e_end_campo.setMinimumSize(QSize(0, 20))
-        self.att_e_end_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_22.addWidget(self.att_e_end_campo)
 
@@ -363,7 +339,6 @@ class Ui_cadastro_cliente(object):
         self.att_f_tel_1_campo = QLineEdit(self.att_f_tel_1)
         self.att_f_tel_1_campo.setObjectName(u"att_f_tel_1_campo")
         self.att_f_tel_1_campo.setMinimumSize(QSize(0, 20))
-        self.att_f_tel_1_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_23.addWidget(self.att_f_tel_1_campo)
 
@@ -389,7 +364,6 @@ class Ui_cadastro_cliente(object):
         self.att_g_tel_2_campo.setObjectName(u"att_g_tel_2_campo")
         self.att_g_tel_2_campo.setMinimumSize(QSize(0, 20))
         self.att_g_tel_2_campo.setMaximumSize(QSize(16777215, 20))
-        self.att_g_tel_2_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_21.addWidget(self.att_g_tel_2_campo)
 
@@ -406,7 +380,6 @@ class Ui_cadastro_cliente(object):
         self.att_h_atualizar_botao = QPushButton(self.att_h_atualizar)
         self.att_h_atualizar_botao.setObjectName(u"att_h_atualizar_botao")
         self.att_h_atualizar_botao.setMinimumSize(QSize(0, 25))
-        self.att_h_atualizar_botao.setStyleSheet(estilo_push_button())
         icon2 = QIcon()
         icon2.addFile(u":/icons/icones/retweet.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.att_h_atualizar_botao.setIcon(icon2)
@@ -437,14 +410,12 @@ class Ui_cadastro_cliente(object):
         self.rem_a_cliente_campo = QLineEdit(self.rem_a_cliente)
         self.rem_a_cliente_campo.setObjectName(u"rem_a_cliente_campo")
         self.rem_a_cliente_campo.setMinimumSize(QSize(0, 20))
-        self.rem_a_cliente_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_31.addWidget(self.rem_a_cliente_campo)
 
         self.rem_a_cliente_botao = QPushButton(self.rem_a_cliente)
         self.rem_a_cliente_botao.setObjectName(u"rem_a_cliente_botao")
         self.rem_a_cliente_botao.setMinimumSize(QSize(70, 20))
-        self.rem_a_cliente_botao.setStyleSheet(estilo_line_edit())
         self.rem_a_cliente_botao.setIcon(icon1)
         self.rem_a_cliente_botao.setIconSize(QSize(11, 16))
 
@@ -465,7 +436,6 @@ class Ui_cadastro_cliente(object):
         self.rem_b_ciente_checkbox = QCheckBox(self.rem_b_ciente)
         self.rem_b_ciente_checkbox.setObjectName(u"rem_b_ciente_checkbox")
         self.rem_b_ciente_checkbox.setMinimumSize(QSize(0, 20))
-        self.rem_b_ciente_checkbox.setFont(font)
         self.rem_b_ciente_checkbox.setStyleSheet(u"")
 
         self.horizontalLayout_30.addWidget(self.rem_b_ciente_checkbox)
@@ -483,7 +453,6 @@ class Ui_cadastro_cliente(object):
         self.rem_c_remover_botao = QPushButton(self.rem_c_remover)
         self.rem_c_remover_botao.setObjectName(u"rem_c_remover_botao")
         self.rem_c_remover_botao.setMinimumSize(QSize(0, 25))
-        self.rem_c_remover_botao.setStyleSheet(estilo_push_button())
         icon3 = QIcon()
         icon3.addFile(u":/icons/icones/tag-delete.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.rem_c_remover_botao.setIcon(icon3)

@@ -68,7 +68,7 @@
       <item>
        <widget class="QTabWidget" name="guia">
         <property name="currentIndex">
-         <number>2</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="guia_adicionar">
          <attribute name="title">
@@ -624,6 +624,15 @@ QPushButton:pressed {
     border-color: rgb(200,200,200);
     border-radius: 3px;
 }</string>
+               </property>
+               <property name="inputMethodHints">
+                <set>Qt::ImhExclusiveInputMask</set>
+               </property>
+               <property name="inputMask">
+                <string>R$</string>
+               </property>
+               <property name="maxLength">
+                <number>2</number>
                </property>
                <property name="placeholderText">
                 <string>R$ 000,00</string>

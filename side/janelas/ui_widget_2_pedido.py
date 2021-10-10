@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'widget_2_pedidoaicQsR.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
     QRect, QSize, QUrl, Qt)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
@@ -19,13 +9,14 @@ import os, sys
 sys.path.insert(0, './')
 import side.icons_rc
 
-from side.janelas.padrao import *
+stylesheet = open('side/janelas/padrao.css', 'r').read()
 
 class Ui_Pedido(object):
     def setupUi(self, Pedido):
         if Pedido.objectName():
             Pedido.setObjectName(u"Pedido")
         Pedido.resize(623, 516)
+        Pedido.setStyleSheet(stylesheet)
         self.verticalLayout_2 = QVBoxLayout(Pedido)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -36,9 +27,6 @@ class Ui_Pedido(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.b_corpo.sizePolicy().hasHeightForWidth())
         self.b_corpo.setSizePolicy(sizePolicy)
-        font = QFont()
-        font.setFamily(u"Century Gothic")
-        self.b_corpo.setFont(font)
         self.b_corpo.setFrameShape(QFrame.StyledPanel)
         self.b_corpo.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.b_corpo)
@@ -52,7 +40,6 @@ class Ui_Pedido(object):
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.a_header_label = QLabel(self.a_header)
         self.a_header_label.setObjectName(u"a_header_label")
-        self.a_header_label.setFont(font)
         self.a_header_label.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_13.addWidget(self.a_header_label)
@@ -65,14 +52,12 @@ class Ui_Pedido(object):
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.a_header_modelo_label = QLabel(self.a_header_modelo)
         self.a_header_modelo_label.setObjectName(u"a_header_modelo_label")
-        self.a_header_modelo_label.setFont(font)
 
         self.horizontalLayout_12.addWidget(self.a_header_modelo_label, 0, Qt.AlignRight)
 
         self.a_header_modelo_combo = QComboBox(self.a_header_modelo)
         self.a_header_modelo_combo.setObjectName(u"a_header_modelo_combo")
         self.a_header_modelo_combo.setMinimumSize(QSize(114, 22))
-        self.a_header_modelo_combo.setStyleSheet(estilo_combo_box())
 
         self.horizontalLayout_12.addWidget(self.a_header_modelo_combo, 0, Qt.AlignLeft)
 
@@ -103,7 +88,6 @@ class Ui_Pedido(object):
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.b_cliente_label = QLabel(self.b_cliente_layout)
         self.b_cliente_label.setObjectName(u"b_cliente_label")
-        self.b_cliente_label.setFont(font)
 
         self.horizontalLayout_10.addWidget(self.b_cliente_label, 0, Qt.AlignRight)
 
@@ -115,16 +99,12 @@ class Ui_Pedido(object):
         sizePolicy2.setHeightForWidth(self.b_cliente_campo.sizePolicy().hasHeightForWidth())
         self.b_cliente_campo.setSizePolicy(sizePolicy2)
         self.b_cliente_campo.setMinimumSize(QSize(0, 20))
-        self.b_cliente_campo.setFont(font)
-        self.b_cliente_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_10.addWidget(self.b_cliente_campo)
 
         self.b_cliente_botao = QPushButton(self.b_cliente_layout)
         self.b_cliente_botao.setObjectName(u"b_cliente_botao")
         self.b_cliente_botao.setMinimumSize(QSize(70, 20))
-        self.b_cliente_botao.setFont(font)
-        self.b_cliente_botao.setStyleSheet(estilo_push_button())
         icon = QIcon()
         icon.addFile(u":/icons/icones/search.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.b_cliente_botao.setIcon(icon)
@@ -162,7 +142,6 @@ class Ui_Pedido(object):
         self.esq_tab = QTabWidget(self.layout_esq)
         self.esq_tab.setObjectName(u"esq_tab")
         self.esq_tab.setMinimumSize(QSize(0, 0))
-        self.esq_tab.setFont(font)
         self.tab_add = QWidget()
         self.tab_add.setObjectName(u"tab_add")
         self.verticalLayout_10 = QVBoxLayout(self.tab_add)
@@ -188,7 +167,6 @@ class Ui_Pedido(object):
         sizePolicy4.setHeightForWidth(self.tab_add_2_combo.sizePolicy().hasHeightForWidth())
         self.tab_add_2_combo.setSizePolicy(sizePolicy4)
         self.tab_add_2_combo.setMinimumSize(QSize(0, 22))
-        self.tab_add_2_combo.setStyleSheet(estilo_combo_box())
 
         self.horizontalLayout_15.addWidget(self.tab_add_2_combo)
 
@@ -211,8 +189,6 @@ class Ui_Pedido(object):
         self.tab_add_3_campo = QLineEdit(self.tab_add_3)
         self.tab_add_3_campo.setObjectName(u"tab_add_3_campo")
         self.tab_add_3_campo.setMinimumSize(QSize(0, 22))
-        self.tab_add_3_campo.setFont(font)
-        self.tab_add_3_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_16.addWidget(self.tab_add_3_campo)
 
@@ -235,8 +211,6 @@ class Ui_Pedido(object):
         sizePolicy4.setHeightForWidth(self.tab_add_4_botao.sizePolicy().hasHeightForWidth())
         self.tab_add_4_botao.setSizePolicy(sizePolicy4)
         self.tab_add_4_botao.setMinimumSize(QSize(0, 25))
-        self.tab_add_4_botao.setFont(font)
-        self.tab_add_4_botao.setStyleSheet(estilo_push_button())
         icon1 = QIcon()
         icon1.addFile(u":/icons/icones/plus.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.tab_add_4_botao.setIcon(icon1)
@@ -269,7 +243,6 @@ class Ui_Pedido(object):
         sizePolicy4.setHeightForWidth(self.tab_rem_2_combo.sizePolicy().hasHeightForWidth())
         self.tab_rem_2_combo.setSizePolicy(sizePolicy4)
         self.tab_rem_2_combo.setMinimumSize(QSize(0, 22))
-        self.tab_rem_2_combo.setStyleSheet(estilo_combo_box())
 
         self.horizontalLayout_18.addWidget(self.tab_rem_2_combo)
 
@@ -292,8 +265,6 @@ class Ui_Pedido(object):
         self.tab_rem_3_campo = QLineEdit(self.tab_rem_3)
         self.tab_rem_3_campo.setObjectName(u"tab_rem_3_campo")
         self.tab_rem_3_campo.setMinimumSize(QSize(0, 22))
-        self.tab_rem_3_campo.setFont(font)
-        self.tab_rem_3_campo.setStyleSheet(estilo_line_edit())
 
         self.horizontalLayout_19.addWidget(self.tab_rem_3_campo)
 
@@ -313,8 +284,6 @@ class Ui_Pedido(object):
         sizePolicy4.setHeightForWidth(self.tab_rem_4_botao.sizePolicy().hasHeightForWidth())
         self.tab_rem_4_botao.setSizePolicy(sizePolicy4)
         self.tab_rem_4_botao.setMinimumSize(QSize(0, 25))
-        self.tab_rem_4_botao.setFont(font)
-        self.tab_rem_4_botao.setStyleSheet(estilo_push_button())
         icon2 = QIcon()
         icon2.addFile(u":/icons/icones/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.tab_rem_4_botao.setIcon(icon2)
@@ -356,8 +325,6 @@ class Ui_Pedido(object):
         sizePolicy6.setHeightForWidth(self.campo_exibicao.sizePolicy().hasHeightForWidth())
         self.campo_exibicao.setSizePolicy(sizePolicy6)
         self.campo_exibicao.setMinimumSize(QSize(255, 0))
-        self.campo_exibicao.setFont(font)
-        self.campo_exibicao.setStyleSheet(estilo_text_browser())
 
         self.horizontalLayout_14.addWidget(self.campo_exibicao)
 
@@ -385,8 +352,6 @@ class Ui_Pedido(object):
 
         self.d_obs_obs = QTextEdit(self.d_obs)
         self.d_obs_obs.setObjectName(u"d_obs_obs")
-        self.d_obs_obs.setFont(font)
-        self.d_obs_obs.setStyleSheet(estilo_text_edit())
 
         self.verticalLayout_12.addWidget(self.d_obs_obs)
 
@@ -403,8 +368,6 @@ class Ui_Pedido(object):
         self.e_adicionar_botao.setObjectName(u"e_adicionar_botao")
         self.e_adicionar_botao.setMinimumSize(QSize(280, 25))
         self.e_adicionar_botao.setMaximumSize(QSize(280, 16777215))
-        self.e_adicionar_botao.setFont(font)
-        self.e_adicionar_botao.setStyleSheet(estilo_push_button())
 
         self.horizontalLayout_21.addWidget(self.e_adicionar_botao)
 
@@ -446,3 +409,16 @@ class Ui_Pedido(object):
         self.e_adicionar_botao.setText(QCoreApplication.translate("Pedido", u"Adicionar Pedido.", None))
     # retranslateUi
 
+if __name__ == '__main__':
+    import sys
+
+    class Tela(QMainWindow):
+        def __init__(self):
+            super().__init__()
+            self.ui = Ui_Pedido()
+            self.ui.setupUi(self)
+
+    app = QApplication(sys.argv)
+    janela = Tela()
+    janela.show()
+    sys.exit(app.exec_())
