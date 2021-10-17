@@ -4,6 +4,7 @@ from dependencias.janelas import *
 from dependencias.models_peewee import *
 from dependencias.erros import *
 from side.janelas.ui_janela_aviso import Ui_MainWindow
+from side.janelas.ui_widget_5_relatorio import Ui_relatorio
 
 
 # TODO: Retirar essa artimanha da engenharia
@@ -113,6 +114,7 @@ class Tela(Suporte, QMainWindow):
         self.pedido = WidgetPedido(self)
         self.cadastro_cliente = WidgetCadastroCliente(self)
         self.cadastro_item = WidgetCadastroItem(self)
+        self.relatorio = WidgetRelatorio(self)
 
 
         # -- adicionando as janelas a serem exibidas no corpo
@@ -124,6 +126,7 @@ class Tela(Suporte, QMainWindow):
         self.ui.verticalLayout.addWidget(self.pedido, 0, Qt.AlignCenter)
         self.ui.verticalLayout.addWidget(self.cadastro_cliente, 0, Qt.AlignCenter)
         self.ui.verticalLayout.addWidget(self.cadastro_item, 0, Qt.AlignCenter)
+        self.ui.verticalLayout.addWidget(self.relatorio, 0, Qt.AlignAbsolute)
 
 
         # - Comportamento
@@ -144,9 +147,10 @@ class Tela(Suporte, QMainWindow):
         self.ui.a_botao_home.clicked.connect(self.exibindo_ocultando_menu)
 
         # -- gatilhos para exibicao dos contextos no corpo
-        self.ui.b_botao_pedido.clicked.connect(self.exibir_pedido)
-        self.ui.c_botao_cliente.clicked.connect(self.exibir_cliente)
-        self.ui.d_botao_item.clicked.connect(self.exibir_item)
+        self.ui.b_botao_pedido.clicked.connect(lambda: self.transitando('self.pedido'))
+        self.ui.c_botao_cliente.clicked.connect(lambda: self.transitando('self.cadastro_cliente'))
+        self.ui.d_botao_item.clicked.connect(lambda: self.transitando('self.cadastro_item'))
+        self.ui.e_botao_relatorio.clicked.connect(lambda: self.transitando('self.relatorio'))
 
         # -- função de controle do tamanho da janela.
         QSizeGrip(self.ui.espacador_2)
@@ -176,32 +180,16 @@ class Tela(Suporte, QMainWindow):
         self.animacao.start()
         self.animacao2.start()
 
-    def exibir_landing_page(self):
-        self.landing_page.show()
-        self.pedido.hide()
-        self.cadastro_cliente.hide()
-        self.cadastro_item.hide()
-
-    def exibir_pedido(self):
-        self.landing_page.hide()
-        self.pedido.show()
-        self.cadastro_cliente.hide()
-        self.cadastro_item.hide()
-        self.exibindo_ocultando_menu()
-
-    def exibir_cliente(self):
-        self.landing_page.hide()
-        self.pedido.hide()
-        self.cadastro_cliente.show()
-        self.cadastro_item.hide()
-        self.exibindo_ocultando_menu()
-
-    def exibir_item(self):
+    def transitando(self, janela):
         self.landing_page.hide()
         self.pedido.hide()
         self.cadastro_cliente.hide()
-        self.cadastro_item.show()
+        self.cadastro_item.hide()
+        self.relatorio.hide()
         self.exibindo_ocultando_menu()
+
+        self.alvo = eval(janela)
+        self.alvo.show()
 
 
 class WidgetLandingPage(QWidget):
@@ -689,6 +677,19 @@ class WidgetCadastroItem(SuporteWidget, QWidget):
             except:
                 self.emitindo_aviso('Cheque a caixa de ciente para confirmar a exclusão.')
 
+
+class WidgetRelatorio(SuporteWidget, QWidget):
+    def __init__(self, parent=None):
+        super(WidgetRelatorio, self).__init__(parent)
+
+        self.ui = Ui_relatorio()
+        self.ui.setupUi(self)
+
+        # - Modulos a serem utilizados:
+        #self.cliente = PeeweePedido()
+        self.aviso = JanelaAviso()
+
+        self.hide()
 
 
 
